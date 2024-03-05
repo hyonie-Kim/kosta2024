@@ -59,15 +59,15 @@ void Divide(int a, int b)
 
 // 최대값 최소값 함수
 
-void valueFunc (int Min, int Max)
+void valueFunc (int m, int x)
 {
-	if (Max > Min)
+	if (m > x)
 	{
-		printf("최대값: %d, 최소값: %d", Max, Min);
+		printf("최대값: %d, 최소값: %d", m, x);
 	}
-	else if(Max < Min)
+	else if(m < x)
 	{
-		printf("최대값: %d, 최소값: %d", Min, Max);
+		printf("최대값: %d, 최소값: %d", x, m);
 	}
 	else
 	{

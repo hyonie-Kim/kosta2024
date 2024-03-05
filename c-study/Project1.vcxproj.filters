@@ -30,5 +30,14 @@
     <ClCompile Include="function.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="localVariable.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="globalVariable.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="static.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
