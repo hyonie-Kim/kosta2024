@@ -37,7 +37,7 @@ void Circle(int radian)
 
 // 연산 함수
 
-void Plus(int a, int b)
+void Plus(int a, int b) // 형식 매개변수
 {
 	printf("두 수의 합: %d\n", a + b);
 	
@@ -55,6 +55,24 @@ void Mutiple(int a, int b)
 void Divide(int a, int b)
 {
 	printf("두 수의 나누기: %d\n", a / b);
+}
+
+// 최대값 최소값 함수
+
+void valueFunc (int Min, int Max)
+{
+	if (Max > Min)
+	{
+		printf("최대값: %d, 최소값: %d", Max, Min);
+	}
+	else if(Max < Min)
+	{
+		printf("최대값: %d, 최소값: %d", Min, Max);
+	}
+	else
+	{
+		printf("두 정수의 값은 같습니다.");
+	}
 }
 
 void main()
@@ -87,16 +105,16 @@ void main()
 	Circle(r);*/
 
 
-	int a = 0;
-	int b = 0;
+	//int a = 0;
+	//int b = 0;
 
-	printf("두 정수를 입력하세요 : ");
-	scanf_s("%d%d", &a,&b);
+	//printf("두 정수를 입력하세요 : ");
+	//scanf_s("%d%d", &a,&b);
 
-	Plus(a, b);
-	Minus(a, b);
-	Mutiple(a, b);
-	Divide(a, b);
+	//Plus(a, b); // 실매개변수 - 실제변수
+	//Minus(a, b);
+	//Mutiple(a, b);
+	//Divide(a, b);
 
 	/*printf("두 수의 합: %d\n", a + b);
 	printf("두 수의 차: %d\n", a - b);
@@ -104,6 +122,13 @@ void main()
 	printf("두 수의 나누기: %d\n", a / b);*/
 
 
+	int Max;
+	int Min;
+	printf("두정수를 입력해주세요.\n");
+	scanf_s("%d %d", &Min, &Max);
+	valueFunc(Min, Max);
+	
+	
 }
 
 // 디버깅
