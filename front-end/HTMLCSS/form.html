@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>form</title>
+  </head>
+  <body>
+    <!-- get, post: 로그인할떄 사용 -->
+    <form method="post" action="http://localhost/method.php">
+      <input type="text" name="myname" size="30" value="이름입력" />
+      <p></p>
+      <input type="password" name="mypw" size="30" value="1111" />
+      <p></p>
+
+      평소에 선호하는 언어의 종류를 고르시오.
+      <p></p>
+      <!-- name을 다르게 -->
+      <input type="checkbox" name="cb1" checked /> C++
+      <input type="checkbox" name="cb2" /> 아랍어
+      <input type="checkbox" name="cb3" /> 자바스크립트
+      <input type="checkbox" name="cb4" /> 자바
+
+      <p></p>
+      현재 당신의 PC를 포멧하시겠습니까?
+      <p></p>
+      <!-- name을 동일하게 -->
+      <input type="radio" name="myradio" checked />예
+      <input type="radio" name="myradio" />아니오
+      <p></p>
+
+      <select name="" id="">
+        <option value="">당신의 세대는</option>
+        <option value="10">10대</option>
+        <option value="20" selected>20대</option>
+        <option value="30">30대</option>
+        <option value="40">40대</option>
+        <option value="50">50대</option>
+        <option value="60">60대</option>
+      </select>
+      <p></p>
+      <!-- 파일업로드 -->
+      <input type="file" name="myname" id="" />
+      <p></p>
+
+      <input type="submit" value="전송" />
+      <input type="image" src="image/cat.jpg" width="100" />
+    </form>
+  </body>
+</html>
