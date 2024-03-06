@@ -129,6 +129,8 @@
   <ItemGroup>
     <ClCompile Include="Array.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </DeploymentContent>
     </ClCompile>
     <ClCompile Include="Array2.cpp" />
     <ClCompile Include="conditional.cpp">
