@@ -135,6 +135,8 @@
     <ClCompile Include="Array2.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="callbyreference.cpp" />
+    <ClCompile Include="factorial.cpp" />
     <ClCompile Include="conditional.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
