@@ -66,5 +66,14 @@
     <ClCompile Include="callbyreference.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="fectorial2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="accumulateFunc.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="pointer2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
