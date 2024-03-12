@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 struct student
 {
@@ -19,6 +20,13 @@ void main()
 	// 멤버 선택해서 값을 대입
 	// 	a.age = 10;
 
+	st1.age = 20;
+	st1.height = 180;
+	
+	// st1.name = "sehyeon" XX 상수이기때문에 직접 대입안됨
+
+	strcpy_s(st1.name, "lee");
+	printf("이름:%s, 나이: %d, 키: %d \n", st1.name, st1.age, st1.height);
 
 
 }
