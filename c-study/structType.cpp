@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <string.h>
+#include <stdio.h> // printf 함수 사용!
+#include <string.h> // strcpy 함수 사용!
 
 struct student
 {
