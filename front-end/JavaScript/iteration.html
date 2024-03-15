@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iteration</title>
+</head>
+<body>
+    <script>
+        var i = 0;
+        
+        // while(i < 5)
+        // {
+        //     document.write((i+1)+". 자바스크립트"+"<br>");
+        //     i++;
+        // }
+
+        // ===============================================
+        // do{
+        //     document.write((i+1)+". 자바스크립트"+"<br>");
+        // }while(i <5)
+
+
+        // ===============================================
+        document.writeln("<h2>for문</h2>");
+
+        // 초기화; 조건문; 증가
+        for(var i = 0; i < 5; i++){
+            document.write((i+1)+". 자바스크립트"+"<br>")
+        }
+
+        // ===============================================
+
+        // 타입 형식 안갖춰도 됨
+        // 자바스크립트에서는 숫자 아니면 문자임. 
+        
+        document.writeln("<h2>배열</h2>");
+
+        // arr 가 객체임
+        var arr = ["자바스크립트", "C언어", "파이썬","Node.js"];
+ 
+        for(var i = 0; i < arr.length; i++)
+        {
+            document.write(arr[i] + "<br>");
+        };
+        
+        document.write("<h3>Push</h3>");
+        arr.push("ASP.NET");
+        arr.push("C#.NET");
+
+        for(var i = 0; i < arr.length; i++)
+        {
+            document.write('<li>'+arr[i] +'</li>'+ "<br>");
+        };
+
+        // li 태그의 엘리먼트를 선택
+        document.writeln("<h2>li 배열</h2>");
+        var list = document.querySelectorAll('li');
+
+        for(var i = 0; i < list.length; i++)
+        {
+            document.write('<li>'+list[i].innerText +'</li>'+ "<br>");
+        };
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+</head>
+<body>
+    <script>
+        function MyInfo(name, age){
+            document.write("이름: " + name + "<br>");
+            document.write("나이: " + age + "<br>");
+
+        };
+
+        function sum(p1,p2){
+            // sum 함수는 두개의 값을 받아서 더하는 기능
+          //  document.write(p1+p2);
+
+            return (p1 + p2);
+        };
+
+        //sum(10,20);
+        // var a = prompt("첫번쨰 숫자");
+        // var b = prompt("두번쨰 숫자");
+
+        var plus = sum(10,20);
+
+        document.write(plus);
+
+        document.write('<div style = "color: red">' + sum(50, 100) + '</div>');
+        document.write('<div style = "color: blue">' + sum(100, 200) + '</div>');
+
+
+
+        // var MyName = prompt("이름");
+        // var MyAge = prompt("나이");
+
+        // MyInfo(MyName, MyAge);
+    </script>
+</body>
+</html>
