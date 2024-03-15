@@ -111,5 +111,14 @@
     <ClCompile Include="structType2.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="cPluseglobal.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="class.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="classAndStrucType.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
