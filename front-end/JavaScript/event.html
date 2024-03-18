@@ -6,12 +6,55 @@
     <title>Event</title>
 </head>
 <body>
-    <script>
-        function func(){
-             alert('버튼을 클릭하였습니다.');
-        }
-    </script>
-    <input type="button" value="버튼" onclick="func()">
+   
+    <input type="button" id="myid" value="버튼">
     <input type="text" onchange="alert('changed')">
+
+    <!-- script 위치중요!! html보다 위에 있으면 id 값을 못찾음-->
+    <script>
+        // 콜백함수
+        // 등록 되어 있는 함수를 호출
+        
+        // 구조상 한가지 일만하는 함수
+        // var element = document.getElementById("myid");
+        // element.onclick = function(){
+        //  alert("버튼을 클릭하였습니다.");
+        // }
+// ==========================================================
+        var element = document.getElementById("myid");
+        // element.onclick = function(){
+        //  alert("첫 번째 이벤트 입니다.");
+        // }
+
+        // var element = document.getElementById("myid");
+        // element.onclick = function(){
+        //  alert("두 번째 이벤트 입니다.");
+        // }
+// ==========================================================
+
+    // 애드리스너 이벤트 등록
+
+    // element.addEventListener("click", function(){
+    // alert("버튼 이벤트 입니다.");
+    // })
+
+// ==========================================================
+
+    // 애드리스너 이벤트 함수를 사용하면 다중이벤트 처리 가능
+    element.addEventListener("click", function(){
+         alert("첫 번째 이벤트 입니다.");
+        })
+
+        var element = document.getElementById("myid");
+        element.addEventListener("click", function(){
+         alert("두 번째 이벤트 입니다.");
+        })
+        
+// ==========================================================
+
+        // function func(){            
+        //     alert('버튼을 클릭하였습니다.')
+        // }
+    </script>
 </body>
 </html>
