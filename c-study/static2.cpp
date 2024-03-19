@@ -1,10 +1,24 @@
 
+#include <iostream>
+
+using namespace std;
+
 // 예금계좌 클래스 생성 - 외부 코드
 class Deposit
 {
 // 변수 생성
 public:
-	Deposit() {} // 디폴트 생성자
+	Deposit() { // 디폴트 생성자
+	
+		nCount++; // 1증가
+		cout << "객체 생성 개수 :" << nCount << endl; // nCount출력 
+	} 
+	
+	~Deposit() { // 소멸자 생성자
+		nCount--; // 1증가
+		cout << "객체 소멸 개수 :" << nCount << endl; // nCount출력
+	}
+
 	Deposit(char* name, double balance)
 	{
 		// 생성자 오버로딩
@@ -24,11 +38,16 @@ public:
 		// 일반함수는 객체가 생성되야 쓸수있음
 		dInterestRate = dNewRate;
 	}
+	static double GetInterestRate()
+	{
+		return dInterestRate;
+	}
 
 private:
 	char* strName; // 이름 변수
 	double	dBalance; // 예금 계좌
 	static double dInterestRate; // 이자율
+	static int nCount; 
 
 	/*
 	목적 1:  내부에서 공유
@@ -41,6 +60,7 @@ private:
 
 // 소속을 정해주면 0.05의 값을 갖음
 double Deposit::dInterestRate = 0.05;
+int Deposit::nCount = 0; // nCount 스태틱 변수 초기화 
 
 
 // 내부 코드
@@ -51,6 +71,7 @@ void main()
 	// Deposit::dInterestRate = 0.06; 이방법도 아님
 
 	Deposit::SetInterestRate(0.06);
+	cout << Deposit::GetInterestRate() << endl;
 
 
 }

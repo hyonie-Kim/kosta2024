@@ -78,15 +78,31 @@ void main()
 
 	MousePoint a; // 디폴트 생성자 명시함
 
+	MousePoint* pArr[3];
+	pArr[0] = new MousePoint(10, 20);
+	pArr[1] = new MousePoint(100, 200);
+	pArr[2] = new MousePoint(1000, 2000);
+
+	for (int i =0; i <3; i++)
+	{
+		cout << pArr[i]->GetX() << endl;
+		cout << pArr[i]->GetY() << endl;
+
+	}
+	for (int i = 0; i < 3; i++) {
+		delete pArr[i];
+	}
+
 	// 구조체의 값 출력
 	/*cout << pt.x << endl;
 	cout << pt.y << endl;*/
 
 
 	// 클래스의 값 출력
-	cout << pt.GetX() << endl;
-	cout << pt.GetY() << endl;
+	/*cout << pt.GetX() << endl;
+	cout << pt.GetY() << endl;*/
 
+	
 
 }
 
