@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>형변환</title>
+</head>
+<body>
+    <script>
+        var str1 = '사람이' + '아니므니다';
+
+        // 문자열과 숫자 결합
+        var str2 = '은하철도' + 999;
+
+        document.write(str1 + "<br>");
+        document.write(str2 + "<br>");
+
+        document.write('8293' == 8293);
+        document.write('8293' === 8293);
+
+        document.write('A' < 'B');
+
+
+        // char str[] =
+        var str = "하늘과 바람과 별과 시";
+        var res = str.charAt(5);
+        document.write('res = ' + res);
+        
+        var retSlice = srt.slice(4,7);
+        document.write('res = ' + retSlice + '<br>');
+
+        var retsubstring = srt.substring(8,10);
+        document.write('res = ' + retsubstring + '<br>');
+
+        var retSub = srt.substring(4,6);
+        document.write('res = ' + retSub + '<br>');
+        
+
+        var name = '윤동주';
+        var myStr = str.fontcolor("blue");
+        myStr = myStr.italics();
+        myStr = myStr.fontsize(6);
+        myStr = myStr.bold();
+
+        document.write('res = ' + myStr + '<br>');
+
+
+
+        
+    </script>
+</body>
+</html>
