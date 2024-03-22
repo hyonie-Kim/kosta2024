@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>순차 탐색</title>
+</head>
+<body>
+    <script>
+        function LinearSearch(pArr, key)
+        {
+            for(var i =0; i < pArr.length; i++)
+            {
+                if(key == apArrr[i])
+                {
+                    return key;
+                }
+            }
+            return -1;
+        }
+
+        var arr =[6,4,2,3,7,8,5,9,10,1];
+        var searchKey = prompt("검색 숫자 입력");
+
+        var ret = LinearSearch(arr, searchKey);
+        if(ret === -1)
+        {
+            document.write("검색 불가")
+        }else{
+            document.write("검색 했음")
+        }
+    </script>
+</body>
+</html>
