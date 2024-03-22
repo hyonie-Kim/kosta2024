@@ -141,5 +141,11 @@
     <ClCompile Include="string.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="searchAlgorithm.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="BinarySearch.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
