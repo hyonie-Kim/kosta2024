@@ -7,6 +7,8 @@ class String // 1. 클래스의 이름은 String
 {
 	//2. 생성자 소멸자
 public:
+
+	// 생성자
 	String(char ch, int nSize)
 	{
 		// 4. 어떤 특정문자가 들어오고,
@@ -23,6 +25,13 @@ public:
 	}
 	~String() {
 		delete[] pBuffer;
+	}
+	
+	// 이름 동일 
+	// 반환타입 없음
+	String(const String& s) // 주소값을 넘겨 받음
+	{
+
 	}
 
 	// 연산자는 이름을 붙여준다.
@@ -65,4 +74,6 @@ void main()
 	// str2 = str1;
 	str2.operator=(str1); // 위에 코드랑 똑같음.
 	str2.SetData();
+
+
 }

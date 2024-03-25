@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="소스 파일\HRIS">
+      <UniqueIdentifier>{caa1d917-c9b5-4a56-b605-20d48d89f240}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="operator.cpp">
@@ -146,6 +149,9 @@
     </ClCompile>
     <ClCompile Include="BinarySearch.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Employee.cpp">
+      <Filter>소스 파일\HRIS</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
