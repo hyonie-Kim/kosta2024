@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주기적 타이머</title>
+</head>
+<body>
+    <script>
+        var timerID;
+        var count = 0;
+
+        function timeStart(){
+            alert('카운트가 시작됩니다.')
+            // 1`초 후에 첫번쨰 인자가 이벤트핸들러 함수가 실행됨
+            timerID = window.setInterval(
+                function(){
+                    // count가 1초씩 증가
+                    document.getElementById("result").innerHTML = count++;
+                }, 1000)
+        }
+
+        function timeStop(){
+            window.clearInterval(timerID);
+        }
+    </script>
+
+    <button onclick="timeStart()">카운트 시작</button>
+    <button onclick="timeStop()">카운트 중지</button>
+    <h1><div id="result"></div></h1>
+</body>
+</html>
+<!-- 
+
+주기적 - 응용해서 시계를 만들수 있음.
+
+1. div 태그로 카운터가 실행되는 화면 구성
+id-"result"
+
+2. 카운트는 0부터 시작
+3. setInterval() 인자로 첫번째 함수, 두번째 초가 들어감
+함수 안에는 getElementById();
+
+카운트 변수를 HTML 화면에 출력하도록
+-->

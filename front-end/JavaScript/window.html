@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window 객체</title>
+</head>
+<body>
+    <script>
+        var newWin;
+        function newOpen(){
+            newWin = window.open("myscript.js", '', 'width =600, height=30' )
+        }
+
+        function newCloe(){
+            window.close();
+        }
+    </script>
+    <button onclick="newOpen()">
+    새 윈도우 열기
+    </button>
+    <button onclick="newCloe()">
+     윈도우 닫기
+     </button>
+</body>
+</html>

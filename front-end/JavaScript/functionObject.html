@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function 객체</title>
+</head>
+<body>
+    <script>
+        //  Function 객체 생성
+        // Plus 변수인데 함수 포인터변수가 된 것.
+        // x는 10, y는 20 이 들어가서 계산식을 출력
+        var Plus = new Function('x,y', 'return (x + y)');
+        
+        // 전달인자 넣음
+        Plus(10, 20);
+        // plus 함수의 주소값이 들어 있구낭..
+        document.write(Plus(10,20));
+
+    </script>
+</body>
+</html>

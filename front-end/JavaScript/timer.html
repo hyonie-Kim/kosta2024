@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>일회성 타이머</title>
+</head>
+<body>
+    <script>
+        var timerID;
+
+        
+        
+        function timeStart(){
+            alert('5초 후에 폭탄이 폭발합니다.')
+            // 5초 후에 첫번쨰 인자가 이벤트핸들러 함수가 실행됨
+            timerID = window.setTimeout(
+                function(){
+                    // 외부에서 호출할 필요가 없기때문에
+                    // 함수에 이름이 없음. => 익명함수
+                    alert("BOM~~!!!!!💥");
+                }, 5000)
+        }
+
+        function timeStop(){
+            window.clearTimeout(timerID);
+            alert('폭탄 중지')
+        }
+    </script>
+
+    <button onclick="timeStart()">시한 폭탄 설정</button>
+    <button onclick="timeStop()">시한 폭탄 해제</button>
+</body>
+</html>
+<!-- 
+
+일회성
+1. button 생성
+2. 함수이름 만들기 timeStart(),  timeStop 
+3. 시한 폭탄 설치하면 타이머가 작동
+   첫번째 전달인자는 이벤트핸들러(함수), 
+   두번쨰 전달인자는 시간
+
+*콜백함수 - 내가 호출하는 것이 아니라 때가 되면 호출됨
+setTimeout 인자로 하나는 함수 두번째는 시간이들어감
+setTimeout 가 timeID를 리턴함
+타이머를 멈출때 timeID 이걸로 핸들링하면 됨 
+
+4. 시한폭탄 정지 핸들러하기
+
+-->

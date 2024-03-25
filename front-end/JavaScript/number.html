@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 문자열인데 안의 내용은 숫자
+        // 
+        var str1 = "8293";
+        var str2 = "abc";
+        var objNum = new Number("1234"); //동적으로 생성한 문자열
+        var num = 1234; // 일반 숫자
+
+        // 문자열 결합을함.
+        // 문자열 + 숫자 = 문자열
+        document.write(str1 + num + "<br>");
+        // 숫자 + 숫자 = 숫자
+        document.write(objNum + num + "<br>");
+        document.write(Number(str1) + "<br>"); //숫지
+    
+        // Number는 숫자로 형변환
+        //NaN - 숫자가 아니다 리턴
+        // 도큐먼트도 window 객체가 생략된 것
+        document.write(Number(str1) + "<br>");
+        
+        // Number객체의 최소값 최대값 구하기
+        // 숫자형의 범위
+        // 해당범위를 넘어가면.. 
+        document.write(Number.MAX_VALUE + '<br>');
+        document.write(Number.MIN_VALUE + '<br>');
+
+        // window.alert - 윈도우가 최상단이기 떄문에 생략된것
+        alert('경고');
+
+        
+        
+
+    </script>
+</body>
+</html>
