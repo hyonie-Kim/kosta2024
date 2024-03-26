@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window Object</title>
+</head>
+
+<!-- 윈도우객체는 태그에 등록해서 사용 -->
+<body onload="myLoad()" onblur="myBlur()">
+    <script>
+
+        //이벤트
+        function myLoad(){
+            alert('문서를 로드했습니다.');
+        }
+        function myBlur(){
+            alert('포커스를 잃었습니다.');
+
+        }
+    </script>
+    <button onclick="">새 윈도우 열기</button>
+    <button onclick="">윈도우 닫기</button>
+    <h1>윈도우 객체에서 제공하는 이벤트</h1>
+</body>
+</html>

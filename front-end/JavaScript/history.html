@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function historyCount(){
+            // 방문했던 사이트 횟수 출력
+            var urlCount = history.length;
+
+            document.write("현재까지 방문 횟수는: ", urlCount + "군데 입니다."+ "<p>")
+
+        }
+
+        function goback(){
+            history.back();
+            history.go(-2); // 2페이지 뒤로가기
+        }
+
+        function goforward(){
+            history.forward();
+        }
+    </script>
+    <button onclick="historyCount()">방문횟수</button>
+    <button onclick="goback()">뒤로</button>
+    <button onclick="goforward()">앞으로</button>
+
+</body>
+</html>

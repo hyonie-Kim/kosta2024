@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>location</title>
+</head>
+<body>
+    <script>
+        // var locationProp = location.protocol + '\n' 
+        // + location.host + '\n'
+        // + location.hostname + '\n'
+        // + location.href + '\n'
+        // + location.pathname + '\n'
+        // + location.post + '\n'
+        
+        // alert(locationProp)
+
+        function changeAddr(){
+            location.href = "http://www.naver.com"
+        }
+
+        function updateDoc(){
+            location.reload();
+        }
+        function moveDoc(){
+            location.replace("http://www.daum.net")
+        }
+ </script>
+<button onclick="changeAddr()">주소 변경</button>
+<div id="result"></div>
+<button onclick="updateDoc()">새로고침</button>
+<button onclick="moveDoc()">문서이동</button>
+
+
+</body>
+</html>
