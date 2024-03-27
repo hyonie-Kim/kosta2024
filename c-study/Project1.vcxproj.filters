@@ -153,5 +153,8 @@
     <ClCompile Include="Employee.cpp">
       <Filter>소스 파일\HRIS</Filter>
     </ClCompile>
+    <ClCompile Include="bubbleSort.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
