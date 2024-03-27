@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BubbleSort</title>
+</head>
+<body>
+    <script>
+        function BubbleSort(parr)
+        {
+            let len = parr.length;
+            let result;
+            
+            for(let i = 0; i < len-1; i++){
+                for(let j = 1; j < i; j++)
+                {
+                    if(parr[j-1] > parr[j])
+                    {
+                        var temp = parr[j-1];
+                        parr[j-1] = parr[j];
+
+                        parr[j] = temp;
+                    }
+                }
+                result =  parr.join("");
+            }
+            
+            return result
+        }
+
+        function SelectedSort(parr)
+        {
+            let len = parr.length;
+            let result;
+            
+            for(let i = 0; i < len-1; i++){
+                for(let j = 1; j < i; j++)
+                {
+                    if(parr[j-1] > parr[j])
+                    {
+                        var temp = parr[j-1];
+                        parr[j-1] = parr[j];
+
+                        parr[j] = temp;
+                    }
+                }
+                result =  parr.join("");
+            }
+            
+            return result
+        }
+
+
+        let arr = new Array("javascript");
+        // let arr = new Array(..."javascript"); 전개연산자
+
+        let str = arr[0].split("");
+
+        document.write("정렬 전 : ", arr, "<br>");
+        let sortedarr = BubbleSort(str);
+        document.write("정렬 후 : ", sortedarr);
+        
+    </script>
+</body>
+</html>
