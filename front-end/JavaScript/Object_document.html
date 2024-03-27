@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocumentObject</title>
+</head>
+<body>
+    <script>
+        var colorValue;
+
+        function backColor(){
+            colorValue = document.getElementById("colorVlaue");
+
+            document.bgColor = colorValue.value;
+
+            console.log(colorValue.value)
+
+        }
+        function textColor(){
+
+            document.fgColor = colorValue.value;
+
+        }
+
+    </script>
+    <h1>배경색과 글자색을 변경합니다.</h1>
+    색상입력 : <input type="text" id="colorVlaue" value="">
+    <p>
+        <button onclick="backColor()">배경색 변경하기</button>
+        <button onclick="textColor()">글자색 변경하기</button>
+    </p>
+    
+</body>
+</html>
