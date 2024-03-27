@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>네비케이터</title>
+</head>
+<body>
+    <script>
+        // document.write("appCodeName : " + navigator.appCodeName + "<br>");
+        // document.write("appName : " + navigator.appName + "<br>");
+        // document.write("appVersion : " + navigator.appVersion + "<br>");
+        // document.write("platform : " + navigator.platform + "<br>");
+        // document.write("userAgent : " + navigator.userAgent + "<br>");
+
+        // console.log(navigator)
+
+        /* for문 테스트 ===================================================================
+        for(var i = 0; i <10; i++)
+        {
+        //네비게이터에 인덱스를 줌
+        // 인덱스를 통해서 객체 접근은 안됨!!
+        document.write("userAgent : " + navigatorp[i] + "<br>");
+
+        }
+        */
+
+        // 반복자의 내부 원리
+        // in 뒤에 객체가 옴
+        // 반복할때마다 네비게이터 객체안에서 name에 던져버림
+        // name 자체를 키값으로 넣어버림
+        // C++ 반복자를 이해하면 더 디테일하게 이해할수 있음.
+
+        /* for in 문 ====================================================================
+        for(let name in navigator)
+        {
+        document.write(name + ":" + navigator[name] + "<br>");
+
+        }
+        */
+
+        /*
+        대소문자를 구분하여 소문자로 바꿔서 정보를 가져오기.
+        console.log("chrome" == "Chrome")
+        */
+
+        var agent = navigator.userAgent.toLowerCase();
+        console.log(navigator.userAgent)
+        console.log(agent.indexOf("chrome"))
+
+        // indexOf 위치를 리턴
+        // 찾는 문자열이 없으면 -1
+        if(agent.indexOf("chrome")!= -1)
+        {
+            // -1이 아니라면 참, 코드실행
+            document.write("<h1>" + "크롬 브라우저 입니다."+ "</h1>")
+
+        }else if(agent.indexOf("firefox")!= -1){
+            document.write("<h1>" + "파이어폭스 브라우저 입니다."+ "</h1>")
+
+        }
+    </script>
+</body>
+</html>
