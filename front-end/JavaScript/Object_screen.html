@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스크린객체</title>
+</head>
+<body>
+    <script>
+        /*
+        document.write("width : " + screen.width + "<br>");
+        document.write("height : " + screen.height + "<br>");
+        
+        // avail 사용가능한 48px 만큼 차이가남..
+        // 작업표시줄 제외한 나머지 영역
+        document.write("availWidth : " + screen.availWidth + "<br>");
+        document.write("availHeight : " + screen.availHeight + "<br>");
+
+        console.log(screen.availWidth)
+        */
+
+
+        for(var name in screen)
+        {
+        document.write(name +" : " + screen[name] + "<br>");
+
+        }
+    </script>
+</body>
+</html>
