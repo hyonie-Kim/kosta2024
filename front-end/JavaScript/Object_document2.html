@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocumentObject</title>
+</head>
+<body>
+    <script>
+        var docValue;
+
+        function changeTitle(){
+            docValue = document.getElementById("titleVlaue");
+
+            document.title = docValue.value;
+
+            //console.log(colorValue.value)
+
+        }
+        function printInfo(){
+           var docInfo =  "문서 제목 : " + document.title + "\r\n"
+           + "현재 URL : " + document.URL + "\r\n"
+           + "문서 바뀐 날짜 : " + document.lastModified + "\t\n";
+
+           alert(docInfo);
+
+        }
+
+    </script>
+    <h1>문서 타이틀 변경 및 문서 정보 출력하기.</h1>
+    색상입력 : <input type="text" id="titleVlaue" value="새문서">
+    <p>
+        <button onclick="changeTitle()">타이틀 변경하기</button>
+        <button onclick="printInfo()">문서 정보 출력하기</button>
+    </p>
+    <p id="content"></p>
+    
+</body>
+</html>
