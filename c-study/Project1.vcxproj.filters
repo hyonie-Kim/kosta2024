@@ -16,6 +16,9 @@
     <Filter Include="소스 파일\HRIS">
       <UniqueIdentifier>{caa1d917-c9b5-4a56-b605-20d48d89f240}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\algorithm">
+      <UniqueIdentifier>{1d274799-3221-4e3a-b1c4-93955f944c5f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="operator.cpp">
@@ -144,17 +147,26 @@
     <ClCompile Include="string.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="searchAlgorithm.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="BinarySearch.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Employee.cpp">
       <Filter>소스 파일\HRIS</Filter>
     </ClCompile>
+    <ClCompile Include="BinarySearch.cpp">
+      <Filter>소스 파일\algorithm</Filter>
+    </ClCompile>
     <ClCompile Include="bubbleSort.cpp">
+      <Filter>소스 파일\algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="hash.cpp">
+      <Filter>소스 파일\algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="exceptionHanding.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="searchAlgorithm.cpp">
+      <Filter>소스 파일\algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="hash2.cpp">
+      <Filter>소스 파일\algorithm</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
