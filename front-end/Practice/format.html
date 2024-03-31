@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>format</title>
+  </head>
+  <body>
+    <script>
+      // 사용자로 부터 문자 한개를 입력
+      // 문자는 Y or N
+
+      var format = prompt('정말로 이 드라이브를 포멧하시겠습니까?(y/n)');
+
+      if (format == 'y' || format == 'Y') {
+        document.write('네, 드라이브를 포멧하겠습니다.');
+      } else if (format == 'n' || format == 'N') {
+        document.write('아니오, 드라이브를 포멧하겠습니다.');
+      } else {
+        document.write('y 또는 n 으로 입력하세요.');
+      }
+    </script>
+  </body>
+</html>

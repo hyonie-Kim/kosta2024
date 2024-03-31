@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 사용자 나이 입력 결과값 출력
+
+      var score = Number(prompt('입력'));
+
+      if (score < 13 && score >= 0) {
+        document.write('어린이입니다.');
+      } else if (score >= 13 && score < 19) {
+        document.write('청소년입니다.');
+      } else if (score >= 19) {
+        document.write('성인입니다.');
+      } else {
+        document.write('정수값을 입력해주세요.');
+      }
+    </script>
+  </body>
+</html>

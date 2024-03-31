@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Array 객체를 사용하여 배열선언
+      // 사용자로 부터 2개의 숫자값 인력 받아 배열에 저장
+      // 두수를 비교하여 큰수를 출력하는 기능은 함수로 처리
+
+      function Max(a, b) {
+        if (a > b) {
+          document.write(a);
+        } else if (a < b) {
+          document.write(b);
+        } else {
+          document.write('두수의 입력값이 같습니다.');
+        }
+      }
+
+      var arr = new Array(2);
+
+      arr[0] = prompt('숫자값을 입력하세요.');
+      arr[1] = prompt('두번째 숫자값을 입력하세요.');
+
+      Max(arr[0], arr[1]);
+    </script>
+  </body>
+</html>

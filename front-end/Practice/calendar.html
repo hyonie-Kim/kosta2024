@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>calendar</title>
+  </head>
+  <body>
+    <script>
+      document.write('<h3>while문 출력</h3>');
+
+      var i = 1;
+      while (i <= 12) {
+        document.write(i + '월' + '<br>');
+        i++;
+      }
+
+      document.write('<h3>for문 출력</h3>');
+
+      for (let i = 1; i <= 12; i++) {
+        document.write(i + '월' + '<br>');
+      }
+
+      document.write('<h3>do-while문 출력</h3>');
+
+      var i = 1;
+      do {
+        document.write(i + '월' + '<br>');
+        i++;
+      } while (i <= 12);
+    </script>
+  </body>
+</html>

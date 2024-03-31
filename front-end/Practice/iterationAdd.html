@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iteration</title>
+  </head>
+  <body>
+    <script>
+      // 1부터 사용자가 입력한 정수까지의 합을 출력
+      var num = prompt('정수를 입력하세요.');
+      var sum = 0;
+      var i = 0;
+
+      while (i <= num) {
+        sum = sum + i;
+        i = i + 1;
+      }
+
+      document.write('1부터 ' + num + '까지의 합 ' + sum);
+    </script>
+  </body>
+</html>

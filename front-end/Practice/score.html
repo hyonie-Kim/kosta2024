@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Score</title>
+  </head>
+  <body>
+    <script>
+      // 60점이상 미만 문구 출력
+      var score = Number(prompt('입력'));
+
+      if (score >= 60 && score <= 100) {
+        document.write('합격입니다.');
+      } else if (score <= 60 && score >= 0) {
+        document.write('불합격입니다.');
+      } else {
+        document.write('0부터 100까지의 정수만 입력하세요.');
+      }
+    </script>
+  </body>
+</html>

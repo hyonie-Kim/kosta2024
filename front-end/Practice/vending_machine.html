@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자판기</title>
+  </head>
+  <body>
+    <script>
+      // 커피자판기 함수로 구현
+      // 100원 블랙커피
+      // 200원 밀크커피
+
+      function vendingMachine(price) {
+        if (price == 100) {
+          document.write('블랙커피');
+        } else if (price == 200) {
+          document.write('밀크커피');
+        } else {
+          document.write('잘못된 금액입니다.');
+        }
+      }
+
+      var coin = Number(
+        prompt('금액을 입력하세요.(블랙커피:100/ 밀크커피:200)')
+      );
+
+      vendingMachine(coin);
+    </script>
+  </body>
+</html>
