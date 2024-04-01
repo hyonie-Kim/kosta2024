@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>가볼만한 사이트</h2>
+    <form name="test" action="">
+        <select name="page" onchange="loadPage()" id="">
+            <option value="https://www.mma.go.kr/">백악관</option>
+            <option value="https://www.mma.go.kr/index.do">병무청</option>
+            <option value="https://namu.wiki/w/%EB%82%98%EB%AC%B4%EC%9C%84%ED%82%A4:%EB%8C%80%EB%AC%B8">나무위키</option>
+            <option value="https://mkt.naver.com/p1/jrschool">쥬니버스쿨</option>
+            <option value="https://gds.gmarket.co.kr/components/sheets">G마켓 디자인</option>
+            <option value="https://ridibooks.com/ebook/recommendation">리디북스</option>
+            <option value="https://onemoreweekend.co.kr/home">주말랭이</option>
+            <option value="https://www.whitehouse.gov/">백악관</option>
+
+        </select>
+
+    </form>
+    <script>
+        function loadPage() {
+            var obj = document.test.page;
+            var selectedValue = obj.options[obj.selectedIndex].value;
+            window.location.href = selectedValue; // 해당 URL로 이동
+        }
+    </script>
+</body>
+
+</html>

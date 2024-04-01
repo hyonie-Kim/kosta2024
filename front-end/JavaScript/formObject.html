@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>폼객체</title>
+</head>
+
+<body onload="init()">
+  <form name="test" action="">
+    아이디: <input type="text" name="id" size="20" value="" />
+    <p></p>
+    패스워드: <input type="password" name="pw" size="10" value="" />(8자 이상 12자 이하)<p></p>
+    하고싶은말: <p></p> <textarea name="diary" rows="7" cols="50"></textarea>
+    <p></p>
+    연령대<p></p>
+
+    <input type="radio" name="age" value="10대">10대
+    <input type="radio" name="age" value="20대">20대
+    <input type="radio" name="age" value="30대">30대
+    <input type="radio" name="age" value="40대">40대 <p></p>
+
+    개인 정보 동의 <p></p>
+
+    <input type="checkbox" onclick="checkAll()"> 개인정보 전체 선택 <p></p>
+    <ul>
+      <input type="checkbox" name="chk1" value="1"> 개인정보 수집 <p></p>
+      <input type="checkbox" name="chk2" value="2"> 개인정보 조회 <p></p>
+      <input type="checkbox" name="chk3" value="3"> 개인정보 제공<p></p>
+    </ul>
+
+    <h3>메모리 주소값을 저장하는 변수를 무엇이라고 하는가</h3>
+    <p></p>
+    <input type="radio" name="exam" value="1" onclick="result()"> 약수터 <p></p>
+    <input type="radio" name="exam" value="2" onclick="result()"> 화개장터 <p></p>
+    <input type="radio" name="exam" value="3" onclick="result()"> 포인터 <p></p>
+    <input type="radio" name="exam" value="4" onclick="result()"> 놀이터 <p></p>
+
+
+    <input type="submit" name="btn1" value="등록하기" onclick="register()"></button>
+    <input type="reset" name="btn2" value="다시작성" onclick="reWrite()"></button>
+    <input type="button" name="btn3" value="전체선택" onclick="selectAll()"></input>
+    <input type="button" name="btn4" value="버튼 이름 바꾸기" onclick="changeName()"></input>
+
+  </form>
+
+  <script>
+    function result() {
+      if (document.test.exam[2].checked == true) {
+        alert("정답입니다.");
+      } else {
+        alert("다시 풀어주세요.")
+      }
+    }
+
+    function checkAll() {
+
+      for (var i = 8; i < 11; i++) {
+        // 8,9,10을 체크하고 싶음
+        document.test.elements[i].click();
+      }
+    }
+
+    var bToggle = true;
+
+    function changeName() {
+      //버튼의 이름이 바뀌는 토글버튼 생성
+      if (bToggle) {
+        document.test.btn1.value = "안등록하기"
+        //bToggle = false; // true일때 들어왔으니 false로 변경
+        bToggle = !bToggle;
+      } else {
+        document.test.btn1.value = "등록하기"
+
+        //bToggle = true;
+        bToggle = !bToggle;
+
+      }
+    }
+
+    function selectAll() {
+      // 전체선택 버튼을 클릭하면
+      // name diary인 
+      document.test.diary.select()
+    }
+
+    function init() {
+      // 화면이 로드되면 아이로 포커스가 감..
+      document.test.id.focus();
+    }
+
+    function register() {
+      // 서브밋 메서드 호출
+
+      for (var i = 0; i < document.test.age.length; i++) {
+        if (document.test.age[i].checkd == true) {
+          alert(document.test.age[i].value + "")
+        }
+      }
+
+      var check1 = document.test.chk1.cheked;
+      var check2 = document.test.chk2.cheked;
+      var check3 = document.test.chk3.cheked;
+
+      if (document.test.id.value == "") {
+        // 아이디의 값의 비어 있다면
+        alert("아이디를 입력하세요.")
+      } else if (document.test.pw.value == "") {
+        alert("패스워드를 입력하세요.")
+
+      } else {
+        // 비밀번호 길이를 받음
+        var pwlen = document.test.pw.value.length;
+        if (pwlen < 8 || pwlen >= 12) {
+          alert("8자 이상 12자 이하로 입력하세요.")
+        } else {
+          // 회원가입 전에 한번 더 필터 함
+          if (check1 && check2 && check3) {
+
+
+            // 아이디 패스워스 모두 입력되었다면
+            // submit에 의해서 서버에 한번 다녀옴
+            document.test.submit();
+            alert("회원가입을 축하합니다.")
+          } else {
+            alert("모든 항목을 체크하여 주십시오.")
+
+          }
+
+        }
+      }
+    }
+
+    function reWrite() {
+      document.test.reset();
+      alert("다시 입력하세요.");
+    }
+
+    // 자바스크립트 코드로 접근해서 폼의 속성 확인
+    // document.write("도큐먼트 테스트 객체:" + document.test.length + "<p>");
+
+    // for (var i = 0; i < document.test.length; i++) {
+    //   document.write(
+    //     "도큐먼트 테스트 객체:" + document.test.elements[i].name + "<p>"
+    //   );
+    // }
+  </script>
+</body>
+
+</html>
