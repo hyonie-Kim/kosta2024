@@ -19,9 +19,8 @@ void InsertValue(int pKey)
 	int bucket = 0;
 	// 키값 전달
 	bucket = Hash(pKey);
-	// 버킷의 첫번쨰 위치 입력 키값을
+	// 버킷의 첫번째 위치 입력 키값을
 		// 해당 위치에 저장
-		// 
 	hashtable[bucket][0] = pKey;
 }
 

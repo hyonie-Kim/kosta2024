@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>래퍼</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <ul>
+        <li>HTML</li>
+    </ul>
+
+    <ul class="objlang">
+        <li>JavaScript</li>
+    </ul>
+
+    <script>
+
+        $(document.body).css("background-color", "green")
+
+            // jQuery가 소괄호를 호출함
+
+            (function ($) {
+                // 태크 선택자로 접근
+                $('ul.objlang').click(function () {
+                    $('li', this).css('background-color', 'yellow');
+                    alert("hi!!")
+                })
+            })(jQuery)
+    </script>
+
+
+</body>
+
+</html>

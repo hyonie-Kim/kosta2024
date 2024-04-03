@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 코드</title>
+</head>
+
+<body>
+    <script>
+
+        window.onload = function () {
+            console.log("html 준비되면 실행");
+            document.getElementById('pp').style.color = 'green'
+        }
+
+        function fn_click(color) {
+            document.querySelector("#pp").style.color = color;
+        }
+    </script>
+    <p id="pp">Hello World</p>
+    <button onclick="fn_click('red')">red</button>
+    <button onclick="fn_click('blue')">blue</button>
+</body>
+
+</html>

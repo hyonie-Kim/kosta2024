@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+/*
 int LinearSearch(int *pArr, int size, int searchKey) {
 
 	for (int i = 0; i < searchKey; i++)
@@ -32,26 +33,32 @@ void main()
 
 }
 
-
+*/
 
 
 // 검색
 // 8을 찾고 싶어요.
 // scanf를 통해서 임의의 수를 입력
 
+void main()
+{
+	int arr[] = { 6, 4, 2, 3, 7, 8, 5, 9, 10, 1 };
+	int arrLength = sizeof(arr) / sizeof(arr[0]);
+	
+	for (int i =0; i < arrLength; i++)
+	{
+		if (8 == arr[i])
+		{
+			printf("숫자 %d이 검색되었습니다. ", arr[i]);
+		}
+	}
+	printf("검색 되지 않았습니다.");
+	
+}
+
+
 //arr[0], arr[1];
 
 //printf("배열의 요소 출력: ");
-/*for (int i = 0; i < arrLength; i++)
-{
-	if (8 == arr[i])
-	{
-		scanf_s(" 숫자 %d을 찾았습니다. ", arr[i]);
-	}
-	else{
-		scanf_s("%d은 찾는숫자가 아닙니다. ", arr[i]);
-	}
-
-}*/
 
 // 배열의 이름은 주소값
