@@ -25,3 +25,32 @@ void main()
 		add(a);
 	}
 }
+
+
+
+//int main(void)
+//{
+//	int num = 0;
+//	
+//	
+//	while (num < 5)
+//	{
+//		printf("무한루프 while문!!! %d\n", num);
+//
+//		num++;
+//	}
+//	
+//	
+//	/*
+//	while (num < 5)
+//		printf("중괄호 생략 while문!! %d\n", num++);
+//	*/
+//
+//	/*
+//	while (num < 5)
+//		printf("중괄호 생략2 while문!! %d\n", num), num++;
+//	*/
+//
+//	//return 0;
+//
+//}

@@ -19,12 +19,12 @@
     <Filter Include="소스 파일\algorithm">
       <UniqueIdentifier>{1d274799-3221-4e3a-b1c4-93955f944c5f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\iteration">
+      <UniqueIdentifier>{66843ab6-99e7-4420-9f7c-9a0a0bc45839}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="operator.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="iteration.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Fileclass.cpp">
@@ -73,9 +73,6 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="fectorial2.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="accumulateFunc.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="pointer2.cpp">
@@ -170,6 +167,15 @@
     </ClCompile>
     <ClCompile Include="hash3.cpp">
       <Filter>소스 파일\algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="accumulateFunc.cpp">
+      <Filter>소스 파일\iteration</Filter>
+    </ClCompile>
+    <ClCompile Include="iteration.cpp">
+      <Filter>소스 파일\iteration</Filter>
+    </ClCompile>
+    <ClCompile Include="NineNineDan.cpp">
+      <Filter>소스 파일\iteration</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
