@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애니메이션</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <style>
+        #target {
+            margin: 3px;
+            width: 80px;
+            height: 80px;
+            background: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="fadeOut" id="fadeOut">
+    <input type="button" value="fadeIn" id="fadein">
+    <input type="button" value="hide" id="hide">
+    <input type="button" value="show" id="show">
+    <input type="button" value="slidedown">
+    <input type="button" value="slidesup">
+    <input type="button" value="mix">
+    <div id="target">Target</div>
+    <script>
+        $('input[type = "button"]').click(function (e) {
+            var $this = $(e.target);
+            switch ($this.atrr('id')) {
+                case ' fedeOut':
+                    $('#target').fadeOut('slow');
+                    break;
+                case ' fedein':
+                    $('#target').fadeIn('slow');
+                    break;
+                case ' hide':
+                    $('#target').hide();
+                    break;
+                case ' show':
+                    $('#target').show();
+                    break;
+                case ' slidedown':
+                    $('#target').slidedown('slow');
+                    break;
+                case ' slideup':
+                    $('#target').slideup('slow');
+                    break;
+                case ' mix':
+                    $('#target').fadeOut('slow').delay(1000).fedeIn('slow')
+                        .slideup('slow').delay(1000).slidedown('slow')
+
+                    break;
+            }
+        })
+    </script>
+</body>
+
+</html>

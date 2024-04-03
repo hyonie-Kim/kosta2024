@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>엘리먼트삭제</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <style>
+        p {
+            background: orange;
+            margin: 2px;
+            padding: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Hello</p>
+    how are
+    <p>you?</p>
+    <button>Call remove() on paragraphs</button>
+    <script>
+        $("button").click(function () {
+            $("p").remove()
+        })
+    </script>
+</body>
+
+</html>

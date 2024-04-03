@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>엘리먼트치환</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <style>
+        p {
+            background: orange;
+            margin: 6px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Hello</p>
+    <p>everyOne</p>
+    <p>World</p>
+    <script>
+        $("<b>안녕</b>").replaceAll("p")
+    </script>
+</body>
+
+</html>

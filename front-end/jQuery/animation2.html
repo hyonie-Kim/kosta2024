@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애니메이션</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <style>
+        div {
+            background-color: darkkhaki;
+            width: 300px;
+            border: 1px solid green;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="go">
+        전방에 5초간 하바
+    </button>
+    <div id="block">
+        와아
+    </div>
+    <script>
+        $("#go").click(function () {
+            $("#block").animate({
+                width: "500",
+                opacity: 0.4,
+                marginLeft: "50px",
+                fontSize: "50px",
+                borderWidth: "10px"
+            }, 5000)
+        })
+    </script>
+</body>
+
+</html>

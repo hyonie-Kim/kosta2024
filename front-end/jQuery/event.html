@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- JQuery CDN -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+    <!-- 최신 CDN -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+    <script>
+        function clickHandler(e) {
+            alert("클릭하였습니다.");
+        }
+        // document.getElementById()
+        $(document).ready(function () {
+            console.log('DDD');
+            $("#clickme").click(clickHandler);
+            $("#remove_evt").bind("click", function (e) {
+                $("#clickme").unbind('click', clickHandler);
+            })
+            $("#trigger_evt").bind('click', function (e) {
+                $("#clickme").trigger('click');
+            })
+        })
+
+    </script>
+    <input type="button" value="clickme" id="clickme">
+    <input type="button" value="unbind" id="remove_evt">
+    <input type="button" value="trigger" id="trigger_evt">
+</body>
+
+</html>
