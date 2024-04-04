@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+</head>
+
+<body>
+    <div id="output1"></div>
+
+    <script>
+        $.ajax({
+            url: "https://jamsuham75.github.io/image/test.json",
+            method: "GET",
+            dataType: 'json',
+            success: function (res) {
+                // 응답 데이터 처리
+                console.log("데이터 도착", res.users);
+                var data = res.users;
+
+                // $("output1").append
+                // $.each(res, function (index, item) {
+                //     $("#output1").append(index + "");
+                //     $("#output1").append(item.users + "");
+
+                // })
+
+                for (let i = 0; data.length; i++) {
+                    $("output1")
+                }
+
+            },
+            error: function (error) {
+                // 에러 처리
+                console.log(error);
+            }
+
+        })
+    </script>
+</body>
+
+</html>

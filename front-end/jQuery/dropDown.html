@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>드롭다운</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+</head>
+
+<body>
+    <button id="menuButton">메뉴 표시</button>
+    <ul id="dropdownMenu">
+        <li><a href="#">싸이버거</a></li>
+        <li><a href="#">치즈버거</a></li>
+        <li><a href="#">불고기버거</a></li>
+    </ul>
+
+    <script>
+        $(document).ready(function () {
+            $("#menuButton").click(function () {
+                // 메뉴 버튼 클릭 시 토글 작동
+                $("#dropdownMenu").toggle();
+            })
+        })
+    </script>
+</body>
+
+</html>

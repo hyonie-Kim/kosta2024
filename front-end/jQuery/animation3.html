@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애니메이션 3</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+    <div id="animateDiv">애니메이션 영역</div>
+    <button id="anmateButton">애니메이션 시작</button>
+    <script>
+        $(document).ready(function () {
+            $("#anmateButton").click(function () {
+                $("#animateDiv").animate({
+                    width: '150px',
+                    height: '+=150px', //+= 누적
+                    opacity: 0.4,
+                    left: '250px',
+                    //backgroundColor: 'red'
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>
