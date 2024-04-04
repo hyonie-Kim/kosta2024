@@ -15,7 +15,7 @@ public:
 	} 
 	
 	~Deposit() { // 소멸자 생성자
-		nCount--; // 1증가
+		nCount--; // 1
 		cout << "객체 소멸 개수 :" << nCount << endl; // nCount출력
 	}
 
