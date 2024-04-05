@@ -177,5 +177,11 @@
     <ClCompile Include="NineNineDan.cpp">
       <Filter>소스 파일\iteration</Filter>
     </ClCompile>
+    <ClCompile Include="static3.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticLocalVariable.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
