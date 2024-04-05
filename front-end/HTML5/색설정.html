@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>색설정</title>
+</head>
+
+<body>
+    <canvas id="mycanvas" width="600" height="400" style="border: 3px solid">
+
+    </canvas>
+    <script>
+        var canvas = document.getElementById("mycanvas");
+        var mycontext = document.getContext("2d");
+
+
+        // 사각형선만 그림
+        mycontext.beginPath();
+        mycontext.strokeStyle = "#000800";
+        mycontext.strokeStyle = "green"
+        mycontext.strokeRect(10, 10, 100, 100);
+
+        // 사각형 내부 파란색으로 채움
+        mycontext.fillStyle = "blue";
+        mycontext.fillRect(150, 10, 100, 100)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선그리기</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="600" height="400" style="border: 3px solid">
+
+    </canvas>
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var mycontext = document.getContext("2d");
+
+        mycontext.beginPath(); //그리기 시작
+        mycontext.moveTo(100, 20); //시작점 지점
+        mycontext.moveTo(40, 120); //이동점 지점
+        mycontext.moveTo(160, 120);
+        mycontext.fill();
+
+        mycontext.moveTo(300, 20);
+        mycontext.lineTo(200, 60);
+        mycontext.lineTo(200, 120);
+        mycontext.lineTo(400, 120);
+        mycontext.lineTo(400, 60);
+        mycontext.closePath();
+        mycontext.stroke();
+
+
+    </script>
+</body>
+
+</html>
