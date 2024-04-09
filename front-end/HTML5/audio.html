@@ -8,7 +8,29 @@
 </head>
 
 <body>
-    <audio src="Sleep Away.mp3" type="audio/mp3" autoplay="autoplay" controls="controls" loop="loop"></audio>
+    <!-- <audio src="Sleep Away.mp3" type="audio/mp3" autoplay="autoplay" controls="controls" loop="loop"></audio> -->
+    <audio src="Sleep Away.mp3" type="audio/mp3" autoplay="autoplay" id="music"></audio>
+    <button onclick="musicPlay()">음악재생</button>
+    <button onclick="musicPause()">일시중지</button>
+    <br>
+    <div id="time"></div>
+    <script>
+        var music = document.getElementById("music");
+
+        function musicPlay() {
+            music.play();
+        }
+
+        function musicPause() {
+            music.pause();
+        }
+
+        // 플레이 시간 출력
+        music.addEventListener("timeupdate", function () {
+            document.getElementById('time').innerHTML = Math.floor(music.currentTime) + "/" + Math.floor(music.duration) + "초";
+        }, false)
+
+    </script>
 </body>
 
 </html>

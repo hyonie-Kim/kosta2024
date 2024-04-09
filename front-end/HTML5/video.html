@@ -8,7 +8,29 @@
 </head>
 
 <body>
-    <video src="stream.mp4" type="video/mp4" controls="controls" loop="loop" height="500px"></video>
+    <!-- <video src="stream.mp4" type="video/mp4" controls="controls" loop="loop" height="500px"></video> -->
+
+    <video src="stream.mp4" type="video/mp4" height="500px" id="vod"></video>
+
+    <button onclick="vodPlay()">시작</button>
+    <button onclick="vodPause()">일시정지</button>
+    볼륨: <input type="range" id="volumectrl" max="1" step="any" onchange="updateVolume()">
+
+    <script>
+        var vod = document.getElementById("vod");
+
+        function vodPlay() {
+            vod.play();
+        }
+
+        function vodPause() {
+            vod.pause();
+        }
+
+        function updateVolume() {
+            vod.volume = volumectrl.value;
+        }
+    </script>
 </body>
 
 </html>
