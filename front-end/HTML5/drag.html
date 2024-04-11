@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>드래그</title>
+
+    <style>
+      #box1,
+      #box2,
+      #box3 {
+        width: 75px;
+        height: 75px;
+
+        padding: 5px;
+        margin: 5px;
+      }
+
+      #box1 {
+        background-color: red;
+      }
+      #box2 {
+        background-color: green;
+      }
+      #box3 {
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>draggable 속성 설정 테스트</h2>
+    <div
+      id="box1"
+      draggable="true"
+      ondragstart="dragstart(event)"
+      ondrag="dragging(event)"
+      ondragend="dragend(event)"
+    ></div>
+    <div id="box2" draggable="false"></div>
+    <div id="box3" draggable="false"></div>
+
+    <div id="result"></div>
+    <script>
+      function dragstart(e) {
+        document.getElementById('result').innerHTML =
+          '드래그가 시작되었습니다.';
+      }
+
+      function dragging() {
+        document.getElementById('result').innerHTML = '드래그중입니다.';
+      }
+      function dragend() {
+        document.getElementById('result').innerHTML = '드래그가 끝났습니다.';
+      }
+    </script>
+  </body>
+</html>

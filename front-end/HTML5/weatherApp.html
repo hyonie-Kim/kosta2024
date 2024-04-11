@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>현재 날씨 정보</title>
+  </head>
+  <body>
+    <h1>현재 날씨 정보</h1>
+    <p id="weather"></p>
+
+    <script>
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function (position) {
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+
+            var apikey = 'dbd7a97a91c0ac08a69d01e9a6845086';
+            var apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&appid=${apikey}`;
+
+            // 자바스크립트 형식
+            // var apiUrl =
+            //   'https://api.openweathermap.org/data/2.5/weather?lat=' +
+            //   latitude +
+            //   '&lon=' +
+            //   longitude +
+            //   '&units=metric&appid=' +
+            //   apiKey;
+
+            //방법1
+            fetch(apiUrl)
+              .then((response) => response.json())
+              .then((data) => {
+                console.log(data);
+
+                var weatherDescription = data.weather[0].description;
+                var tempperature = data.main.temp;
+                var cityName = data.name;
+                console.log(weatherDescription);
+                console.log(' 객체 접근:', tempperature);
+                console.log(' cityName:', cityName);
+
+                document.getElementById(
+                  'weather'
+                ).innerHTML = `도시: ${cityName} <br> 날씨: ${weatherDescription} <br> 온도: ${tempperature} C`;
+              })
+              .catch((error) =>
+                console.log('날씨 정보를 가져오는중 에러발생', error);
+
+                document.getElementById("weather").innerHTML = "날씨정보 가져올수없음"
+              );
+            //방법2
+
+            // fetch(apiUrl).then(function (res) {
+            //   return res.json();
+            // });
+
+            document.getElementById('weather').innerHTML =
+              '위도 : ' + lat + '경도 : ' + lng;
+          });
+        }
+      }
+
+      getLocation();
+    </script>
+  </body>
+</html>
