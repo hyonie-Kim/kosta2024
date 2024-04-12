@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쇼핑 카트</title>
+    <style>
+        img {
+            width: 200px;
+            margin: 5px;
+            hyphens: 20px;
+
+        }
+
+        #itemList,
+        #cart {
+            width: 660px;
+            height: 300px;
+            padding: 5px;
+            margin: 5px;
+            border: 3px solid;
+            border-radius: 10px;
+            background-color: aliceblue
+        }
+    </style>
+</head>
+
+<body>
+    <h2>베스트 셀러 리스트</h2>
+    <div id="itemList" ondrop="drop(event)" ondragover="drageover(event)">
+        <!-- 상품목록 -->
+        <img src="../HTMLCSS/image/MFC.jpg" id="mfc" alt="" draggable="true" hspace="20" ondragstart="dragstart(event)">
+        <img src="../HTMLCSS/image/C++.jpg" id="cpp" alt="" draggable="true" hspace="20" ondragstart="dragstart(event)">
+        <img src="../HTMLCSS/image/API.jpg" id="api" alt="" draggable="true" hspace="20" ondragstart="dragstart(event)">
+    </div><br><br>
+    <h2>장바구니</h2>
+    <div id="cart" ondrop="drop(event)" ondragover="drageover(event)"></div>
+    <script>
+        function dragstart(e) {
+            e.dataTransfer.setData("books", e.target.id)
+        }
+
+        function drop(e) {
+            var targetId = e.target.getAttribute("id");
+            var id = e.dataTransfer.getData("books");
+            e.target.appendChild(document.getElementById(id))
+
+            if (targetId == 'cart') {
+
+                alert("장바구니에 도서를 담았습니다.")
+                console.log("!!!")
+            } else {
+                alert("장바구니에서 도서를 꺼냈습니다.")
+            }
+
+        }
+
+        function dragover(e) {
+            e.preventDefault();
+        }
+
+    </script>
+</body>
+
+</html>

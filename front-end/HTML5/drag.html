@@ -1,57 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>드래그</title>
 
-    <style>
-      #box1,
-      #box2,
-      #box3 {
-        width: 75px;
-        height: 75px;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>드래그</title>
 
-        padding: 5px;
-        margin: 5px;
-      }
+  <style>
+    #box1,
+    #box2,
+    #box3 {
+      width: 75px;
+      height: 75px;
 
-      #box1 {
-        background-color: red;
-      }
-      #box2 {
-        background-color: green;
-      }
-      #box3 {
-        background-color: blue;
-      }
-    </style>
-  </head>
-  <body>
-    <h2>draggable 속성 설정 테스트</h2>
-    <div
-      id="box1"
-      draggable="true"
-      ondragstart="dragstart(event)"
-      ondrag="dragging(event)"
-      ondragend="dragend(event)"
-    ></div>
+      padding: 5px;
+      margin: 5px;
+    }
+
+    #box1 {
+      background-color: red;
+    }
+
+    #box2 {
+      background-color: green;
+    }
+
+    #box3 {
+      background-color: blue;
+    }
+
+    #target {
+      width: 500px;
+      height: 300px;
+      padding: 5px;
+      margin: 5px;
+      border: 3px solid;
+      background-color: darkgray
+    }
+
+    button {
+      width: 70px;
+      height: 70px;
+      margin: 12px;
+      border-radius: 8px;
+      font-size: 30px;
+      cursor: move;
+      background: #eaeaea4f;
+    }
+
+    #container {
+
+      background-color: #b5c1dc57;
+      margin: 10px;
+      padding: 10px;
+      border-radius: 8px;
+
+    }
+
+    #box {
+      width: 240px;
+      height: 300px;
+      padding: 5px;
+      margin: 5px;
+      background-color: goldenrod;
+
+    }
+  </style>
+</head>
+
+<body>
+  <h2>draggable 속성 설정 테스트</h2>
+  <div id="box" ondrop="drop(event)" ondragover="drageover(event)">
+    <div id="box1" draggable="true" ondragstart="dragstart(event)">
+    </div>
+    <!-- <div id="box1" draggable="true" ondragstart="dragstart(event)" ondrag="dragging(event)" ondragend="dragend(event)">
+    </div> -->
     <div id="box2" draggable="false"></div>
     <div id="box3" draggable="false"></div>
+  </div>
 
-    <div id="result"></div>
-    <script>
-      function dragstart(e) {
-        document.getElementById('result').innerHTML =
-          '드래그가 시작되었습니다.';
+  <div id="target" ondragover="drageover(event)" ondrop="drop(event)"></div>
+  <!-- <div id="target" ondragenter="dragenter(event)" ondragover="drageover(event)" ondragleave="drageleave(event)" ></div> -->
+  <div id="result"></div>
+
+  <div id="container">
+    <button class="draggable" draggable="true">😊</buttton>
+      <button class="draggable" draggable="true">😎</buttton>
+  </div>
+  <div id="container">
+    <button class="draggable" draggable="true">🤩</buttton>
+      <button class="draggable" draggable="true">😛</buttton>
+  </div>
+
+  <script>
+
+
+    function drageover(e) {
+
+      document.getElementById('result').innerHTML =
+        'target 영역 위에 있습니다.';
+      e.preventDefault();
+
+    }
+
+    function dragstart(e) {
+      console.log(e.target)
+      document.getElementById('result').innerHTML =
+        '드래그가 시작되었습니다.';
+      e.dataTransfer.setData("Text", e.target.id)
+    }
+
+    function drop(e) {
+      var targetId = e.target.getAttribute("id");
+      var id = e.dataTransfer.getData("Text");
+      e.target.appendChild(document.getElementById(id))
+
+      if (targetId == 'target') {
+
+        alert("target에 drop됨!!")
+        console.log("!!!")
+      } else {
+        alert("box에 drop됨!!")
       }
 
-      function dragging() {
-        document.getElementById('result').innerHTML = '드래그중입니다.';
-      }
-      function dragend() {
-        document.getElementById('result').innerHTML = '드래그가 끝났습니다.';
-      }
-    </script>
-  </body>
+      //console.log(id);
+    }
+
+
+
+    /*
+    function dragenter(e) {
+      document.getElementById('result').innerHTML =
+        'target 영역에 진입하였습니다.';
+ 
+    }
+ 
+    function drageleave(e) {
+      document.getElementById('result').innerHTML =
+        'target 영역에서 나갔습니다.';
+ 
+    }
+    function dragging(e) {
+      document.getElementById('result').innerHTML = '드래그중입니다.';
+    }
+    function dragend(e) {
+      document.getElementById('result').innerHTML = '드래그가 끝났습니다.';
+    }
+    */
+  </script>
+</body>
+
 </html>

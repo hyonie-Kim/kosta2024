@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예시</title>
+
+    <style>
+        .green-text {
+            font-weight: 800;
+            color: green;
+        }
+
+        li {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li class="green-text">첫 번째 아이템</li>
+        <li>두 번째 아이템</li>
+        <li class="green-text">세 번째 아이템</li>
+    </ul>
+
+    <script>
+        document.write("Hello World <br><br>");
+
+        function myInfo(name, age) {
+            document.write("이름: " + name + "<br>");
+            document.write("나이: " + age + "<br>");
+
+            // if(age > 20){
+
+            // }else{
+
+            // }
+
+            age >= 20 ? console.log(true) : console.log(false)
+
+        }
+
+        myInfo("hyonie", 21);
+
+        var arr1 = [1, 2, 3]; // new Array [1,2,3] 생략된 형태
+
+        var arr2;
+
+        arr2 = arr1.reverse();
+
+        document.write(arr2)
+
+    </script>
+</body>
+
+</html>
