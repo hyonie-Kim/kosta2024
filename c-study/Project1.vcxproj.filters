@@ -22,6 +22,9 @@
     <Filter Include="소스 파일\iteration">
       <UniqueIdentifier>{66843ab6-99e7-4420-9f7c-9a0a0bc45839}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\practice">
+      <UniqueIdentifier>{35b4c2d0-03dd-4c0f-ba49-53c4979fae3a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="operator.cpp">
@@ -182,6 +185,12 @@
     </ClCompile>
     <ClCompile Include="StaticLocalVariable.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="phoneClass.cpp">
+      <Filter>소스 파일\practice</Filter>
+    </ClCompile>
+    <ClCompile Include="dogClass.cpp">
+      <Filter>소스 파일\practice</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
