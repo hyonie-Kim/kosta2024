@@ -5,10 +5,17 @@ using namespace std;
 
 void main()
 {
-	//int* p = new int();
+	/*
+	double* rate = new double;
+
+	*rate = 3.1415;
+	cout << *rate << endl;
+	delete rate;
+	*/
 
 	
 	auto_ptr<double> rate(new double);
 	*rate = 3.1415;
 	cout << *rate << endl;
+	
 }
