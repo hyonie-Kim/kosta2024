@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테마 저장</title>
+
+
+    <style>
+        body.light {
+            background-color: aliceblue;
+            color: black;
+        }
+
+        body.dark {
+            background-color: #333;
+            color: aliceblue;
+
+        }
+    </style>
+</head>
+
+<body class="light">
+    <h1>테마 스위치</h1>
+    <input type="radio" name="theme" value="light" checked>Ligtht
+    <input type="radio" name="theme" value="dark">Dark
+
+    <script>
+        const themeRadios = document.querySelectorAll('input[name = "theme"]');
+
+        const savedTheme = localStorage.getItem('selectedTheme')
+
+        if (savedTheme) {
+            // 테마 하나만 가져옴./.
+            const selectedRadio = document.querySelector(`input[value = "${savedTheme}"]`)
+            selectedRadio.checked = true;
+            document.body.classList.add(selectedRadio.value)
+        }
+        // 반복자사용
+        // object형식이 다양하기 때문에 
+        // 제네릭철학에서 반복자를 통해서 가져올수 있음.
+        themeRadios.forEach(radio => {
+            radio.addEventListener('change', () => {
+                const selectedTheme = radio.value;
+
+                document.body.classList.remove('light', 'dark');
+                document.body.classList.add(selectedTheme);
+
+                localStorage.setItem("selectedTheme", selectedTheme);
+
+
+            })
+        })
+
+    </script>
+</body>
+
+</html>

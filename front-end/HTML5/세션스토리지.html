@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>세션스토리지</title>
+</head>
+
+<body>
+
+    <button onclick="Available()">웹스토리지 지원 여부</button>
+
+
+    <p></p>
+    키: <input type="text" id="key">
+    값: <input type="text" id="data">
+    <p></p>
+    <button onclick="saveData()">데이터 저장</button>
+    <button onclick="loadData()">데이터 읽기</button>
+    <button onclick="removeData()">항목 삭제</button>
+    <button onclick="removeAll()">전체 삭제</button>
+
+
+    <p></p>
+    <!-- 상태를 나타내는 태그-->
+    <div id="result"></div>
+    <script>
+        function Available() {
+            if (typeof (Storage) != 'undefined') {
+                //스토리지가 존재하면
+                document.getElementById("result").innerHTML = "이 브라우저는 웹스토리지를 지원합니다."
+            } else {
+                document.getElementById("result").innerHTML = "이 브라우저는 웹스토리지를 지원하지 않습니다."
+            }
+        }
+
+        var key = document.getElementById('key');
+        var data = document.getElementById('data');
+
+        function saveData() {
+            // 로컬스토리지에 저장하고 싶다면 해당 객체에서
+            // 키 밸루 형태로 넣어준다.
+            // 로컬스토리지 저장
+            sessionStorage.setItem(key.value, data.value)
+            document.getElementById("result").innerHTML = '데이터 저장 완료';
+        }
+
+        function loadData() {
+            // 초기화
+            document.getElementById("result").innerHTML = '';
+            for (var i = 0; i < sessionStorage.length; i++) {
+
+                // 키값을 넣는다.
+                //sessionStorage.getItem();
+
+                // 0~length 까지 키 값을 읽어옴
+                var myKey = sessionStorage.key(i);
+
+                // 누적되서 출력되도록 하려면 += 기호로 누적출력
+                document.getElementById('result').innerHTML += myKey + ' : ' + sessionStorage.getItem(myKey) + "<br>";
+            }
+        }
+
+        function removeData() {
+            document.getElementById("result").innerHTML = key.value + "데이터 삭제";
+            sessionStorage.removeItem(Key.value);
+        }
+
+        function removeAll() {
+            document.getElementById("result").innerHTML = key.value + "전체 데이터 삭제";
+            sessionStorage.clear();
+        }
+    </script>
+</body>
+
+</html>
