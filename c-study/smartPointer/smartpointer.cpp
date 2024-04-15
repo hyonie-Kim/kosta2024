@@ -3,19 +3,27 @@
 
 using namespace std;
 
+template <class T> class SmartPointer {
+	private:
+		T* p;
+
+	public:
+		SmartPointer(T *sp) {
+			p = sp;
+		}
+		~SmartPointer(){
+			delete p;
+		}
+
+		T& operator*() const {
+			return *p;
+		}
+};
+
 void main()
 {
-	/*
-	double* rate = new double;
 
-	*rate = 3.1415;
-	cout << *rate << endl;
-	delete rate;
-	*/
-
-	
-	auto_ptr<double> rate(new double);
-	*rate = 3.1415;
-	cout << *rate << endl;
+	SmartPointer<string> str(new string("test"));
+	cout << *str << endl;
 	
 }
