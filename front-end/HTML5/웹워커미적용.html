@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>웹워커</title>
+</head>
+
+<body>
+    <script>
+        function Available() {
+            if (window.Worker) {
+                document.getElementById('result').innerHTML = "이 브라우저는 웹워커를 지원합니다."
+
+            } else {
+                document.getElementById('result').innerHTML = "이 브라우저는 웹워커를 지원하지 않습니다."
+
+            }
+        }
+
+        function stopOperation() {
+            // 객체를 생성해서 getTime메서드를 통해서 현재시간을 가져옴
+
+            var endTime = new Date().getTime() + 5000;
+            while () {
+                document.getElementById()
+            }
+
+        }
+        function awake() {
+            alert('일어나자');
+        }
+    </script>
+    <button onclick="Available()">웹 우커 지원 여부</button>
+    <button onclick="stopOperation()">워커 미적용 수행</button>
+    <button onclick="">꺠어날 시간</button>
+
+    <div id="result"></div>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>웹워커 적용</title>
+</head>
+
+<body>
+    <script>
+
+        function applyWorker() {
+            if (window.Worker) {
+                //worker 객체 생성
+                worker = new Worker('worker.js')
+            } else {
+
+            }
+        }
+        function awake() {
+            alert('일어나자');
+        }
+
+        function killWorker() {
+            worker.terminate();
+            document.getElementById('result').innerHTML = '워커가 종료되었습니다.'
+        }
+
+        function closeWorker() {
+            worker.postMessage('close');
+        }
+
+    </script>
+
+    <button onclick="applyWorker()">워커 적용 수행</button>
+    <button onclick="awake()">꺠어날 시간</button>
+    <button onclick="killWorker()">워커 종료</button>
+    <button onclick="closeWorker()">워커 내부 종료(스스로 종료)</button>
+
+    <div id="result"></div>
+</body>
+
+</html>
