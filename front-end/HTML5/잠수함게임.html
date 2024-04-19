@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>잠수함 게임</title>
+    <style>
+        body {
+            background-color: cornsilk;
+        }
+
+        canvas {
+            /* 캔버스 영역 배경 */
+            background-color: #0099FF;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="800" height="600"></canvas>
+    <script>
+        // 캔버스 객체
+        var canvas;
+        var ctx;
+        var canvasBuffer;
+        var bufferCtx;
+        var threadSpeed = 16;
+
+        // 잠수함
+        var submarine;
+        var sx, sy, sw = 60, sh = 35;
+
+        // 배경이미지
+        var background;
+
+        // 장애물
+        var enemy = new Array();
+        var enemyColor = ['red', 'blue', 'green'];
+        var ellapse = 10;
+
+        // 타이머
+        var loopInstance;
+
+        // 게임의 상태
+        var STATE_START = false;
+        var STATE_GAMEOVER = false;
+
+        // 키 상태(게임시작: enter, 게임다시시작:space , 방향키(4개))
+        var keyPressed = []
+
+        // 경과 시간
+        var oldTime;
+        var startTime;
+        var totalTime;
+
+        // 이벤트 등록
+        window.addEventListener('load', initialize, false);
+        window.addEventListener('keydown', getKeyDown, false);
+        window.addEventListener('keyup', getKeyUp, false);
+
+
+        function initialize() {
+            canvas = document.getElementById('canvas');
+            if (canvas == null || canvas.getContext == null)
+                return
+            ctx = canvas.getContext('2d');
+
+            canvasBuffer = document.createElement('canvas');
+            canvasBuffer.width = canvas.width;
+            canvasBuffer.height = canvas.height;
+            bufferCtx = canvasBuffer.getContext('2d');
+
+            // 게임 시작 메세지
+            startMessage();
+
+            // 이미지 설정
+            setImage();
+
+            // 반복 동작 설정
+            loopInstance = setInterval(update, threadSpeed);
+
+
+        }
+        function startGame() {
+            STATE_START = true;
+
+            // 캐릭터 초기 위치, sx에 저장할것임
+            sx = canvas.width / 2;
+            sy = canvas.height / 2; // 잠수함의 위치는 화면의 가운데.
+            sw = 60;  // 잠수함 이미지 사이즈
+            sh = 35;
+
+            // 장애물 생성
+            createObstacle();
+
+            // 현재 시간 저장
+            // 현재 게임을 시작한 시간에서 계속 현재 시간에서 고정되어있는 시간을 뻼..?
+            startTime = getTime();
+        }
+
+        function getTime() {
+            var date = new Date();
+            var time = date.getTime();
+            delete date;
+            return time;
+        }
+
+        function update() {
+            if ((keyPressed[13] == true) && (STATE_START == false)) {
+
+                console.log("게임시작");
+                //게임 시작
+                startGame();
+
+            }
+
+
+            if (keyPressed[38]) {
+                //위쪽 방향키를 눌렀을때
+                // 잠수함 좌표를 s, y 의 
+                sy = sy - 2;
+                //sy = sy - 10;
+
+            }
+            if (keyPressed[40]) {
+                sy = sy + 2;
+            }
+            if (keyPressed[37]) {
+                //왼쪽 키
+                sx = sx - 2;
+            }
+            if (keyPressed[39]) {
+                //오른쪽
+                sx = sx + 2;
+            }
+            if (keyPressed[32] == true) {
+                document.location.reload();
+                startGame();
+            }
+
+            if (STATE_START) {
+                // 장애물 이동
+                moveObstacle(ellapse);
+
+                // 그림 그리기
+                drawAll();
+            }
+
+        }
+
+
+        function moveObstacle(ellapse) {
+            for (var i = 0; i < 60; i++) {
+                // 이동한 x좌표가 나옴
+                var mx = enemy[i].vx * ellapse / 1000;
+                // y좌표
+                var my = enemy[i].vy * ellapse / 1000;
+
+                enemy[i].x = enemy[i].x + mx;
+                enemy[i].y = enemy[i].y + my;
+
+
+                // 801이 되버리는 순간 다시 0으로 보냄
+                if (enemy[i].x > canvas.width)
+                    enemy[i].x = 0;
+
+                // 0보다 작으면 
+                if (enemy[i].x < 0)
+                    enemy[i].x = canvas.width;
+
+                if (enemy[i].y > canvas.height)
+                    enemy[i].y = 0;
+
+                if (enemy[i].y < 0)
+                    enemy[i].y = canvas.height;
+
+                // 충돌 검사
+                crashObstacle(i);
+            }
+        }
+        function crashObstacle(index) {
+            // 현재 내 유닛과 충돌했는지 검사
+            console.log("해당 장애물?", index)
+            var mx = enemy[index].x;
+            var my = enemy[index].y;
+
+            // 잠수함의 현재 위치
+            // sw 잠수함의 너비
+            if (mx > sx - sw / 2 && mx < sx + sw / 2 && my > sy - sh / 2 && my < sy + sh / 2) {
+                STATE_GAMEOVER = true;
+            }
+
+
+        }
+
+        function createObstacle() {
+            //60개의 장애물 만들것임..
+            enemy.length = 0;
+            for (var i = 0; i < 60; i++) {
+                // enemy는 배열임.
+                enemy.push(
+                    //오브젝트 형태로 
+                    { // 60개 하나하나가 이런정보를 가지고 잇을것이다.
+                        // x축이 800 어느 한지점에 찍힐것임
+                        x: Math.random() * canvas.width,
+                        // 0 ~29까진은 
+                        y: (i < 30) ? 20 : canvas.height - 20,
+                        vx: Math.random() * 200 - 100,
+                        vy: Math.random() * 200 - 100,
+                        color: Math.floor(Math.random() * 3)
+                    }
+                )
+            }
+        }
+
+        function drawAll() {
+            if (!STATE_START) {
+                // 게임 시작전
+                return;
+            } else if (STATE_GAMEOVER) {
+                // 게임이 끝난경우, 게임 오버 메시지
+                STATE_START = false;
+                drawText("bold 30px arial", "#ffff00", "center", "Game Over💥", 60);
+                drawText("bold 20px arial", "#ffffff", "center", "Spacebar to restart", 20);
+
+            } else {
+                // 게임 시작 시 엔터키를 눌렀을 떼
+                // 배경, 잠수함이미지 출력
+                bufferCtx.drawImage(background, 0, 0);
+                bufferCtx.drawImage(submarine, sx - sw / 2, sy - sh / 2);
+                ctx.drawImage(canvasBuffer, 0, 0);
+
+                // 장애물 출력
+                drawObstacle();
+
+                totalTime = getTime() - startTime;
+                ctx.font = "bold 20px arial";
+                ctx.fillStyle = "#ffff00";
+                ctx.textAlign = "center";
+                ctx.fillText(totalTime, canvas.width - 30, 30)
+
+
+            }
+        }
+
+        // 장애물 출력
+        function drawObstacle() {
+            for (var i = 0; i < 60; i++) {
+                ctx.beginPath()
+                ctx.arc(enemy[i].x, enemy[i].y, 5, 0, 2 * Math.PI);
+                ctx.fillStyle = enemyColor[enemy[i].color];
+                ctx.closePath();
+                ctx.fill();
+            }
+        }
+
+        function getKeyDown(event) {
+            // 키를 눌렀을 때 키다운에 대한 정보가 여기
+            console.log(event);
+            keyPressed[event.keyCode] = true;
+
+
+        }
+
+        function getKeyUp(event) {
+            // 키 떼는 순간 false
+            keyPressed[event.keyCode] = false;
+
+        }
+
+        function setImage() {
+            submarine = new Image();
+            submarine.src = "image/jamsuham.png";
+            background = new Image();
+            background.src = "image/sea.jpg"
+        }
+
+        function drawText(font, color, align, text, ygap) {
+            ctx.font = font;
+            ctx.fillStyle = color;
+            ctx.textAlign = align;
+            ctx.fillText(text, canvas.width / 2, canvas.height / 2 - ygap)
+        }
+
+        function startMessage() {
+            drawText("bold 30px arial", "#ffff00", "center", "Enter To Start", 60);
+            // 조작 방향키 설명 내용 작게할거임.
+            drawText("bold 20px arial", "#ffffff", "center", "조작 방향키 ←↑→↓", 20);
+        }
+
+
+
+    </script>
+</body>
+
+</html>
