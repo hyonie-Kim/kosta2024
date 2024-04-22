@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>캔버스</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="200" height="150"></canvas>
+
+    <script>
+      var canvas = document.getElementById('canvas');
+      var ctx = canvas.getContext('2d');
+      ctx.beginPath();
+      ctx.fillStyle = 'blue';
+      ctx.arc(100, 75, 50, 0, 2 * Math.PI); // (x, y, radius, start, end)
+      ctx.stroke(); // 외곽선 그리기
+      ctx.fill(); // 내부 채우기
+    </script>
+  </body>
+</html>

@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>애니메이션 3</title>
+    <!-- 제이쿼리 CDN -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-</head>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  </head>
 
-<body>
+  <body>
     <div id="animateDiv">애니메이션 영역</div>
-    <button id="anmateButton">애니메이션 시작</button>
+    <button id="animateButton">애니메이션 시작</button>
     <script>
-        $(document).ready(function () {
-            $("#anmateButton").click(function () {
-                $("#animateDiv").animate({
-                    width: '150px',
-                    height: '+=150px', //+= 누적
-                    opacity: 0.4,
-                    left: '250px',
-                    //backgroundColor: 'red'
-                })
-            })
-        })
+      $(document).ready(function () {
+        $('#animateButton').click(function () {
+          $('#animateDiv').animate(
+            {
+              width: '150px',
+              height: '+=150px', //+= 누적
+              left: '250px',
+              backgroundColor: 'yellow',
+              opacity: 0.4,
+            },
+            1000
+          );
+        });
+      });
     </script>
-</body>
-
+  </body>
 </html>

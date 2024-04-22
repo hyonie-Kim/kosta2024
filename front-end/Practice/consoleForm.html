@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>사용자 정보 콘솔에 출력</title>
+  </head>
+  <body>
+    <h3>사용자 정보 콘솔 출력</h3>
+    <hr />
+    <form id="userForm" onsubmit="formCheck(event)">
+      이름: <input type="text" name="name" /> 전화번호:
+      <input type="tel" name="tel" id="" /> 이메일:
+      <input type="email" name="email" placeholder="email@gamil.com" />
+
+      <input type="submit" value="전송" />
+      <input type="reset" value="초기화" />
+    </form>
+
+    <script>
+      function formCheck(event) {
+        event.preventDefault();
+
+        const form = document.getElementById('userForm');
+        var name = form.name.value;
+        var tel = form.tel.value;
+        var email = form.email.value;
+
+        console.log(
+          '이름: ' + name + '\n전화번호: ' + tel + '\n이메일: ' + email
+        );
+      }
+    </script>
+  </body>
+</html>
