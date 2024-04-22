@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 폼</title>
+</head>
+
+<body>
+    <h1>회원가입</h1>
+    <form action="">
+        <table>
+            <tr>
+                <td>아이디*</td>
+                <td>
+                    <input type="text" name="id">
+                    <input type="button" value="중복확인">
+                </td>
+            </tr>
+
+            <tr>
+                <td>비밀번호*</td>
+                <td>
+                    <input type="password" name="password" id="pw">
+                </td>
+            </tr>
+
+            <tr>
+                <td>비밀번호 확인</td>
+                <td>
+                    <input type="password" name="passwordCheck" id="pwcheck" onkeyup="passwordCheck()">&nbsp; 비밀번호를 다시
+                    입력해주세요.
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td id="passwordCheckText"></td>
+            </tr>
+
+            <tr>
+                <td>이름</td>
+                <td>
+                    <input type="text" name="userName">
+                </td>
+            </tr>
+
+            <tr>
+                <td>이메일</td>
+                <td>
+                    <input type="text" name="email" id="">
+                </td>
+            </tr>
+
+
+            <tr>
+                <td><input type="button" value="회원가입" onclick="formCehck(this.form)"></td>
+                <td><input type="reset" value="다시입력"></td>
+            </tr>
+        </table>
+
+    </form>
+
+    <script>
+        function emailCheck() {
+            email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+            if (email_regex) {
+
+            }
+        }
+        function formCehck(form) {
+
+            const exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+
+            if (form.id.value == "") {
+                alert("아이디를 입력하세요.");
+                form.id.focus();
+                return
+            }
+
+            if (form.password.value == "") {
+                alert("비밀번호를 입력하세요.");
+                form.password.focus();
+                return
+            }
+
+            if (form.userName.value == "") {
+                alert("이름을 입력하세요.");
+                form.userName.focus();
+                return
+            }
+
+            if (form.email.value == "") {
+                alert("이메일 주소를 입력하세요.");
+                form.email.focus();
+                return
+            }
+            if (exptext.test(form.email.value) == false) {
+                alert("이메일 형식이 올바르지 않습니다.")
+            } else if (form.id.value == 'testUser' && form.password.value == '1234') {
+                alert(form.id.value + '(' + form.userName.value + ") 님의 \n 회원가입이 완료되었습니다. ")
+            } else {
+                alert("아이디 또는 비밀번호가 틀렸습니다.")
+            }
+
+
+        }
+
+        function passwordCheck() {
+            var password = document.getElementById("pw").value;
+            var passwordCheck = document.getElementById("pwcheck").value;
+
+            if (passwordCheck == "") {
+                document.getElementById("passwordCheckText").innerHTML = ""
+            } else if (password != passwordCheck) {
+                document.getElementById("passwordCheckText").innerHTML = "일치하지 않습니다."
+            } else {
+                document.getElementById("passwordCheckText").innerHTML = "일치합니다."
+            }
+
+        }
+    </script>
+</body>
+
+</html>

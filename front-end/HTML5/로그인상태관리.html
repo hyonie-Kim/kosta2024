@@ -16,24 +16,30 @@
         <label for=""> 사용자 PW:</label>
         <input type="password" id="userpw">
         <button id="loginbtton">로그인</button>
+        <button id="logout">로그아웃</button>
     </div>
 
-    <div id="welcomeMessage">
-        <p>환영합니다. <span id="loggedInUser">님</span></p>
+    <div id="welcomeMessage" style="display: none;">
+        <p>환영합니다. <span id="loggedInUser"></span>님</p>
     </div>
     <script>
         const loginForm = document.getElementById("loginForm");
         const useridInput = document.getElementById("userid");
         const passwordInput = document.getElementById("userpw");
         const loginbutton = document.getElementById("loginbtton");
+        const logout = document.getElementById("logout");
+        const userId = document.querySelector("#loggedInUser")
+        const welcomeMessage = document.getElementById("welcomeMessage")
+
 
         loginbutton.addEventListener('click', function () {
             // useridInput.value;
             // passwordInput.value;
 
-            if (useridInput.value == 'user' && passwordInput == '1234') {
+            if (useridInput.value == 'user' && passwordInput.value == '1234') {
                 // 로그인 
                 // sessionStorage.setItem(key,value) 
+
                 sessionStorage.setItem('loggedInUser', useridInput.value);
                 welcomeMessage.style.display = 'block';
                 loggedInUser.textContent = useridInput.value;
@@ -43,6 +49,14 @@
             }
         })
 
+        logout.addEventListener('click', function () {
+            useridInput.value = null;
+            passwordInput.value = null;
+            welcomeMessage.style.display = 'none';
+
+            alert("로그아웃 하셨습니다.");
+            sessionStorage.clear();
+        })
     </script>
 </body>
 
