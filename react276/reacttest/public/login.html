@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <style>
+        /* body {
+            width: 500px;
+            margin: 0 auto;
+        } */
+
+        button {
+            color: white;
+            background-color: violet;
+            border-radius: 5px;
+            float: right;
+            font-weight: 700;
+
+            height: 30px;
+
+
+        }
+
+        div {
+            margin: 10px 10px;
+        }
+
+        /* input {
+            width: 100%;
+        } */
+
+        #lblId {
+            color: green;
+        }
+
+        #lblPw {
+            color: orange;
+        }
+
+        .account {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <lable id="lblId">아이디</lable>
+        <input type="text" id="userId" class="account">
+    </div>
+
+    <!-- 비밀번호 -->
+    <div>
+        <lable id="lblPw">비밀번호</lable>
+        <input type="password" id="userPw" class="account">
+    </div>
+    <button type="submit" id="login">로그인</button>
+</body>
+
+</html>
