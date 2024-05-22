@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BC6C083F-6A9C-4ED7-A03D-242C5ACF4642}</ProjectGuid>
+    <ProjectGuid>{334D9411-33B3-45EF-BA40-960D2B788CB8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>그리기</RootNamespace>
-    <AssemblyName>그리기</AssemblyName>
+    <RootNamespace>선그리기</RootNamespace>
+    <AssemblyName>선그리기</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

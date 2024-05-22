@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace 그리기
+namespace 선그리기
 {
     internal static class Program
     {

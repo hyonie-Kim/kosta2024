@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace 그리기.Properties
+namespace 선그리기.Properties
 {
 
 
