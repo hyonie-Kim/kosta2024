@@ -63,22 +63,22 @@ while (i < arr.length) {
 
 // 사용자로부터 단수를 입력받고 해당 단수를 출력
 // while문으로 출력
-const readline = require('readline');
+// const readline = require('readline');
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+// const rl = readline.createInterface({
+//   input: process.stdin,
+//   output: process.stdout,
+// });
 
-rl.question('단수를 입력하세요.: ', (dan) => {
-  var i = 1;
-  console.log(dan + ' 단');
-  while (i < 10) {
-    console.log(dan + 'x' + i + '=' + dan * i);
-    i++;
-  }
-  rl.close();
-});
+// rl.question('단수를 입력하세요.: ', (dan) => {
+//   var i = 1;
+//   console.log(dan + ' 단');
+//   while (i < 10) {
+//     console.log(dan + 'x' + i + '=' + dan * i);
+//     i++;
+//   }
+//   rl.close();
+// });
 
 // break
 // var value = 0;
@@ -94,5 +94,39 @@ rl.question('단수를 입력하세요.: ', (dan) => {
 var value = 0;
 while (value < 10) {
   value++;
+  // 0일때 continue
+  if (value % 2 == 0) continue;
   console.log('value의 값 : ' + value);
+}
+
+// while문 이용해서 2-9단까지 출력
+
+// var dan = 2;
+
+// while (dan < 10) {
+//   var i = 1;
+//   while (i < 10) {
+//     console.log(dan + 'x' + i + '=' + dan * i);
+
+//     i++;
+//   }
+
+//   dan++;
+// }
+
+// 2단부터 5단까지만 출력하고, 6단에서 빠져나감
+
+var dan = 2;
+
+while (dan < 10) {
+  if (dan > 5) break;
+
+  var i = 1;
+  while (i < 10) {
+    console.log(dan + 'x' + i + '=' + dan * i);
+
+    i++;
+  }
+
+  dan++;
 }
