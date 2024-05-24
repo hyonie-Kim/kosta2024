@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <input type="button" value="버튼" id="btnclk" onclick="alert('버튼 클릭')" name="" id=""> -->
+    <input type="button" value="버튼" id="btnclk" name="" id="">
+
+    <div id="result"></div>
+    <!-- 함수로 만들기 -->
+    <script>
+        // function msg() {
+        //     alert("버튼 클릭")
+        // }
+
+        // btn.onclick = function () {
+        //     console.log('버튼클릭');
+        // }
+
+        // function msg() {
+        //     alert('버튼 클릭')
+        // }
+
+        class Mouse {
+            handleEvent(event) {
+                switch (event.type) {
+                    case 'mousedown':
+                        result.innerHTML = '마우스 버튼 누름'
+                        break;
+                    case 'mouseup':
+                        result.innerHTML = '마우스 버튼 놓음'
+                        break;
+                }
+            }
+        }
+
+        var mouse = new Mouse();
+        btnclk.addEventListener('mousedown', mouse);
+        btnclk.addEventListener('mouseup', mouse);
+
+    </script>
+</body>
+
+</html>
