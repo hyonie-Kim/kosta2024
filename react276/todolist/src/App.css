@@ -1,3 +1,16 @@
+ul {
+  list-style: none;
+}
+
+.board {
+  background-color: aliceblue;
+  color: black;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  list-style: none;
+}
+
 .container {
   background: aliceblue;
   color: violet;
@@ -6,8 +19,9 @@
   padding: 20px;
   text-align: center;
   max-width: 800px; /*가로축이 800이상 넘어가지 않도록*/
+  margin-bottom: 20px;
 }
-
+/* 
 .App {
   text-align: center;
 }
@@ -45,4 +59,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

@@ -21,6 +21,7 @@ function App() {
         <FuncCom></FuncCom> */}
 
         <TodoList></TodoList>
+        <FuncCom></FuncCom>
       </header>
     </div>
   );
