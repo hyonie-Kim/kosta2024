@@ -3,6 +3,9 @@ import './App.css';
 import ClassCom from './classCom';
 import FuncCom from './FuncCom';
 import TodoList from './TodoList';
+import Timer from './Timer';
+import Clock from './Clock';
+import FuncCom2 from './FuncCom2';
 
 function App() {
   // let title = '오늘 할일';
@@ -21,7 +24,11 @@ function App() {
         <FuncCom></FuncCom> */}
 
         <TodoList></TodoList>
-        <FuncCom></FuncCom>
+        {/* <FuncCom></FuncCom> */}
+        {/* <Timer></Timer> */}
+
+        <Clock></Clock>
+        <FuncCom2 weather="더움">일기예보</FuncCom2>
       </header>
     </div>
   );

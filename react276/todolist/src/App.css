@@ -9,17 +9,44 @@ ul {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   list-style: none;
+
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.todoInput {
+  margin: 0 auto;
+  text-align: center;
+  max-width: 800px;
+}
+.todoInput > input {
+  width: 90%;
+}
+.clock {
+  background-color: pink;
+
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  list-style: none;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .container {
-  background: aliceblue;
+  /* background: aliceblue; */
   color: violet;
   font-size: 40px;
   font-weight: bold;
   padding: 20px;
   text-align: center;
-  max-width: 800px; /*가로축이 800이상 넘어가지 않도록*/
+
   margin-bottom: 20px;
+}
+
+.App-header {
+  max-width: 800px; /*가로축이 800이상 넘어가지 않도록*/
+  margin: 0 auto;
 }
 /* 
 .App {
@@ -37,16 +64,7 @@ ul {
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+
 
 .App-link {
   color: #61dafb;
