@@ -1,0 +1,29 @@
+.backBg {
+  height: 300px;
+  background-image: url(../public/images/coffeebg.jpg);
+  background-position: center;
+  background-size: cover; /* 사이즈에 맞게 자동조절 */
+}
+
+.App {
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

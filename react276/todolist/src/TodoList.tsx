@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
+import TodoModal from './TodoModal';
 
 type Todo = {
   id: number;
@@ -149,21 +150,11 @@ const TodoList: React.FC = () => {
         // hide이벤트가 발생되면 뭔가를 처리함
         // centered가운데 배치
         selectedTodo && (
-          <Modal
+          <TodoModal
             show={showDetail}
-            onHide={() => {
-              handleCloseDetail();
-            }}
-            centered
-          >
-            <Modal.Header closeButton>
-              <Modal.Title>상세정보</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              {selectedTodo.text}의 자세한 정보를 출력합니다.
-              <p>현재날짜: {new Date().toLocaleDateString()}</p>
-            </Modal.Body>
-          </Modal>
+            handelClose={handleCloseDetail}
+            todo={selectedTodo}
+          />
         )
       }
     </div>
