@@ -4,6 +4,7 @@ import './App.css';
 import bookdata from './data/data';
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
 import DetailPage from './pages/DetailPage';
+import About from './pages/About';
 
 function App() {
   console.log(bookdata);
