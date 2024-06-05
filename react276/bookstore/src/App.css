@@ -1,0 +1,11 @@
+.HomeImg {
+  height: 400px;
+  background-image: url(../public/images/onlinebook.png);
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 30px;
+}
+
+.App {
+  text-align: center;
+}
