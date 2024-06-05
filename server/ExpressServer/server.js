@@ -1,5 +1,4 @@
 require('dotenv').config();
-/*
 
 // mysql + node.js 접속
 let mysql = require('mysql');
@@ -20,9 +19,6 @@ conn.connect();
 //   if (err) throw err;
 //   console.log(rows);
 // });
-
-
-*/
 
 // MongoDB 연동
 let mydb;
@@ -48,6 +44,10 @@ mongoClient.connect(process.env.DB_URL).then((client) => {
 const express = require('express');
 const app = express();
 
+// body-parser 라이브러리 추가
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+
 // app.listen(8080, function () {
 //   console.log('포트 8080으로 서버 대기중..');
 // });
@@ -71,6 +71,37 @@ app.get('/enter', function (req, res) {
 });
 
 // app.get('/save', function (req, res) {});
+
+// enter.html에서 저장 버튼 누르면 아래 라우터를 실행
+app.post('/save', function (req, res) {
+  // req 프론트엔드에서 전달
+  // res 응답
+  console.log(req.body.title);
+  console.log(req.body.content);
+
+  //몽고 DB
+  // 데이터 하나만 넣을것임. 이때 오브젝트형식  key,value 형식으로 넣어주면됨.
+  // 성공하면  then 내부에서 콜백함수 등록한다.
+  // 전달인자로 result를 주고 콜백함수를 줄수 있다.
+  mydb
+    .collection('post')
+    .insertOne({ title: req.body.title, content: req.body.content })
+    .then((result) => {
+      console.log(result);
+      console.log('몽고DB 데이터 저장완료');
+    });
+
+  /* 
+  //mysql
+  let sql = 'insert into post(title, content, created) value(?, ?, now())';
+  let params = [req.body.title, req.body.content];
+  conn.query(sql, params, function (err, result) {
+    if (err) throw err;
+    console.log('데이터 저장완료');
+  });
+*/
+  res.send('데이터 저장완료');
+});
 
 app.get('/list', function (req, res) {
   res.send('데이터베이스를 조회합니다.👀');
