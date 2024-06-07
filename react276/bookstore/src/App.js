@@ -5,12 +5,16 @@ import bookdata from './data/data';
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
 import DetailPage from './pages/DetailPage';
 import About from './pages/About';
+import axios from 'axios';
 
 function App() {
   console.log(bookdata);
 
   const [books, setBooks] = useState(bookdata);
   let navigate = useNavigate(); // 함수 포인터임,
+
+  const [btnIcon, setBtnIcon] = useState('🔽');
+  const [expands, setExpands] = useState(false);
 
   // const [books] = useState([
   //   {
@@ -42,7 +46,7 @@ function App() {
           <Navbar.Brand href="#home">BookStore</Navbar.Brand>
           <Nav className="me-auto">
             {/* <Nav.Link href="/">Home</Nav.Link> */}
-            {/* 동적기능ㄴ */}
+            {/* 동적기능*/}
             <Nav.Link
               onClick={() => {
                 navigate('/');
@@ -87,6 +91,33 @@ function App() {
                   ))}
                 </Row>
               </Container>
+              <Button
+                variant="warning"
+                onClick={() => {
+                  expands === false
+                    ? axios
+                        .get('https://jamsuham75.github.io/image/data2.json')
+                        .then((result) => {
+                          console.log(result.data);
+                          console.log(books);
+                          let copy = [...books, ...result.data];
+                          setBooks(copy);
+                          setExpands(true);
+                          setBtnIcon('🔼');
+                        })
+                        .catch(() => {
+                          console.log('fail');
+                        })
+                    : window.location.reload();
+                  setExpands(false);
+                  setBtnIcon('🔽');
+
+                  // window.location.reload();
+                }}
+              >
+                {btnIcon}
+                {/* 더보기 */}
+              </Button>
             </div>
           }
         ></Route>
