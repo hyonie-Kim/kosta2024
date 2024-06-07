@@ -32,7 +32,7 @@ namespace AutoImplementedProperty
             birth.Name = "효니";
             birth.Birthday = new DateTime(1990, 11, 20);
             Console.WriteLine($"Name : {birth.Name}");
-            Console.WriteLine($"birth.Birthday.ToShortDateString()");
+            Console.WriteLine($"Birthday : {birth.Birthday.ToShortDateString()}");
             Console.WriteLine($"Age : {birth.Age}");
 
 
