@@ -39,7 +39,7 @@ function App() {
     <div className="App">
       <Navbar bg="dark" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="#home">Bookstore</Navbar.Brand>
+          <Navbar.Brand href="#home">BookStore</Navbar.Brand>
           <Nav className="me-auto">
             {/* <Nav.Link href="/">Home</Nav.Link> */}
             {/* 동적기능ㄴ */}
@@ -50,16 +50,26 @@ function App() {
             >
               Home
             </Nav.Link>
-            <Nav.Link href="#features">About</Nav.Link>
-            <Nav.Link href="#pricing">BestSeller</Nav.Link>
-            <Nav.Link href="#pricing">Cart</Nav.Link>
-            <Nav.Link href="#pricing">Contact</Nav.Link>
-            <Nav.Link href="/detail">Detail</Nav.Link>
+            <Nav.Link href="/about">About</Nav.Link>
+            <Nav.Link href="/best">BestSeller</Nav.Link>
+            <Nav.Link href="/cart">Cart</Nav.Link>
+            <Nav.Link href="/contact">Contact</Nav.Link>
+            <Nav.Link
+              onClick={() => {
+                navigate('/detail');
+              }}
+            >
+              Detail
+            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>
+
       <Routes>
-        <Route path="/detail" element={<DetailPage></DetailPage>}></Route>
+        <Route
+          path="/detail/:id"
+          element={<DetailPage books={books}></DetailPage>}
+        ></Route>
         <Route
           path="/"
           element={
@@ -80,7 +90,10 @@ function App() {
             </div>
           }
         ></Route>
-        <Route path="/about" element={<About></About>}></Route>
+        <Route path="/about" element={<About></About>}>
+          <Route path="member" element={<div>대표임</div>}></Route>
+          <Route path="location" element={<div>서울임</div>}></Route>
+        </Route>
         <Route path="*" element={'존재하지 않는 페이지입니다.'}></Route>
       </Routes>
     </div>
@@ -88,10 +101,18 @@ function App() {
 }
 
 function BookItem({ book }) {
-  console.log(book);
+  let navigate = useNavigate();
+  // console.log(book);
   return (
-    <Col>
-      <img src={book.img} width="50%"></img>
+    <Col
+      onClick={() => {
+        navigate('/detail/' + book.id);
+      }}
+    >
+      <img
+        src={process.env.PUBLIC_URL + '../images/' + (book.id + 1) + '.jpg'}
+        width="50%"
+      ></img>
       {/* <img src={''}></img> */}
       <h5>{book.title}</h5>
       <p>{book.price}</p>
