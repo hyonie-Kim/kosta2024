@@ -48,6 +48,9 @@ const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// EJS 템플릿 사용
+app.set('view engine', 'ejs');
+
 // app.listen(8080, function () {
 //   console.log('포트 8080으로 서버 대기중..');
 // });
@@ -104,12 +107,16 @@ app.post('/save', function (req, res) {
 });
 
 app.get('/list', function (req, res) {
-  res.send('데이터베이스를 조회합니다.👀');
+  // res.send('데이터베이스를 조회합니다.👀');
+
   mydb
     .collection('post')
     .find()
     .toArray()
     .then((result) => {
       console.log(result);
+      res.render('list.ejs', { data: result });
     });
+
+  // res.sendFile(__dirname + '/list.html');
 });
