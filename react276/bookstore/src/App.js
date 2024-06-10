@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { createContext, useState } from 'react';
 import { Button, Navbar, Container, Nav, Row, Col } from 'react-bootstrap';
 import './App.css';
 import bookdata from './data/data';
@@ -6,6 +6,8 @@ import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
 import DetailPage from './pages/DetailPage';
 import About from './pages/About';
 import axios from 'axios';
+
+export let contextStorage = createContext(0);
 
 function App() {
   console.log(bookdata);
@@ -15,6 +17,8 @@ function App() {
 
   const [btnIcon, setBtnIcon] = useState('🔽');
   const [expands, setExpands] = useState(false);
+  // 재고량
+  let [stock] = useState([1, 2, 3]);
 
   // const [books] = useState([
   //   {
@@ -72,7 +76,11 @@ function App() {
       <Routes>
         <Route
           path="/detail/:id"
-          element={<DetailPage books={books}></DetailPage>}
+          element={
+            <contextStorage.Provider value={{ stock, books }}>
+              <DetailPage books={books}></DetailPage>
+            </contextStorage.Provider>
+          }
         ></Route>
         <Route
           path="/"

@@ -41,6 +41,9 @@ mongoClient.connect(process.env.DB_URL).then((client) => {
   });
 });
 
+// 오브젝트Id 타입캐스팅
+const objId = require('mongodb').ObjectId;
+
 const express = require('express');
 const app = express();
 
@@ -70,7 +73,8 @@ app.get('/', function (req, res) {
 
 // enter라우터를 만듦..
 app.get('/enter', function (req, res) {
-  res.sendFile(__dirname + '/enter.html');
+  res.render('enter.ejs');
+  // res.sendFile(__dirname + '/enter.html');
 });
 
 // app.get('/save', function (req, res) {});
@@ -81,14 +85,18 @@ app.post('/save', function (req, res) {
   // res 응답
   console.log(req.body.title);
   console.log(req.body.content);
-
+  console.log(req.body.someDate);
   //몽고 DB
   // 데이터 하나만 넣을것임. 이때 오브젝트형식  key,value 형식으로 넣어주면됨.
   // 성공하면  then 내부에서 콜백함수 등록한다.
   // 전달인자로 result를 주고 콜백함수를 줄수 있다.
   mydb
     .collection('post')
-    .insertOne({ title: req.body.title, content: req.body.content })
+    .insertOne({
+      title: req.body.title,
+      content: req.body.content,
+      date: req.body.someDate,
+    })
     .then((result) => {
       console.log(result);
       console.log('몽고DB 데이터 저장완료');
@@ -114,9 +122,45 @@ app.get('/list', function (req, res) {
     .find()
     .toArray()
     .then((result) => {
-      console.log(result);
+      // console.log(result);
       res.render('list.ejs', { data: result });
     });
 
   // res.sendFile(__dirname + '/list.html');
+});
+
+app.post('/delete', function (req, res) {
+  // 오브젝트 ID 타입캐스팅
+  console.log(req.body._id);
+  req.body._id = new objId(req.body._id);
+
+  console.log('변경한 상태의 ObjectID: ', req.body._id);
+  mydb
+    .collection('post')
+    .deleteOne(req.body)
+    .then((result) => {
+      console.log('result 값 확인:', result);
+      console.log('DB 데이터 삭제 완료');
+      res.status(200).send(); // 브라우저에 200 성공 전달
+    })
+    .catch((err) => {
+      // 응답 실패
+      console.log(err);
+      res.status(500).send();
+    });
+});
+
+app.get('/content/:id', function (req, res) {
+  console.log(req.params.id);
+
+  // 문자열 ID에서 오브젝트ID로 타입캐스팅
+  req.params.id = new objId(req.params.id);
+  // 리스트에서 클릭한 해당 id
+  mydb
+    .collection('post')
+    .findOne({ _id: req.params.id })
+    .then((result) => {
+      console.log('결과: ', result);
+      res.render('content.ejs', { data: result });
+    });
 });
