@@ -7,6 +7,19 @@
   align-items: center;
   /* font-size: calc(10px); */
 }
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.board {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
 .HomeImg {
   height: 400px;
   background-image: url(../public/images/onlinebook.png);

@@ -1,8 +1,14 @@
 import { Component, useContext, useEffect, useState } from 'react';
 import { Button, Container, Row, Col, Nav } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import mystyle, { styled } from 'styled-components';
 import { contextStorage } from '../App';
+import { addItem } from '../store';
+import { useDispatch, useSelector } from 'react-redux';
+
+// 스토어 데이터 가져오기
+// 1. useSelector
+// 2. 디스패치 useDispatch
 
 function DetailPage(props) {
   // 1. 도서이미지
@@ -13,6 +19,9 @@ function DetailPage(props) {
   // console.log('booksProps', props);
   let [discount, setDiscount] = useState(true);
   let [tab, setTab] = useState(0);
+
+  let navigate = useNavigate();
+  let dispatch = useDispatch();
 
   let { id } = useParams();
   console.log('id값', id);
@@ -83,7 +92,21 @@ function DetailPage(props) {
           <h6>{findBook.content}</h6>
           <p>{findBook.price}</p>
 
-          <Button>카트에 담기</Button>
+          <Button
+            onClick={() => {
+              let result = findBook ? (
+                dispatch(addItem({ id: findBook.id, name: findBook.title }))
+              ) : (
+                <div>상품을 찾을수 없습니다.</div>
+              );
+
+              // 장바구니 이동
+              navigate('/cart');
+              console.log('카트에 담긴 아이템', result);
+            }}
+          >
+            카트에 담기
+          </Button>
         </Col>
       </Row>
       {/* <RedBtn>레드버튼</RedBtn>

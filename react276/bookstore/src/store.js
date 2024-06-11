@@ -25,18 +25,37 @@ let cart = createSlice({
   initialState: [
     // 데이터가 오브젝트 형식
     {
-      id: 1,
+      id: 0,
       name: '백엔드 입무자를 위한 모던 자바스크립트& node.js',
       count: 1,
     },
-    { id: 2, name: 'HTML5와 자바스크립트', count: 1 },
-    { id: 3, name: '리액트를 다루는 기술', count: 1 },
-    { id: 4, name: '리액트를 다루는 기술', count: 1 },
+    { id: 1, name: 'HTML5와 자바스크립트', count: 1 },
+    { id: 2, name: '리액트를 다루는 기술', count: 1 },
   ],
   reducers: {
-    plusCount(state, param) {
-      state[param.payload].count++;
+    plusCount(state, actions) {
+      state[actions.payload].count++;
       //state.count += 1;
+    },
+    minusCount(state, actions) {
+      state[actions.payload].count--;
+    },
+    // 장바구니에 상품 담기
+    addItem(state, actions) {
+      // 오브젝트에 접근해서 일치하는것만 리턴
+      const existingItem = state.find((item) => {
+        return item.id === actions.payload.id;
+      });
+      if (existingItem) {
+        existingItem.count++;
+      } else {
+        state.push({
+          id: actions.payload.id,
+          name: actions.payload.name,
+          // 처음에 한권으로 시작함
+          count: 1,
+        });
+      }
     },
   },
 });
@@ -53,7 +72,7 @@ export default configureStore({
 
 // 구조분해 할당:: user객체 안에 chageName 함수를 export함
 // export let { changeName, increase } = user.actions;
-export let { plusCount } = cart.actions;
+export let { plusCount, minusCount, addItem } = cart.actions;
 
 // 1. createSLice를 만든다.
 // 2. reducer에 등록한다.

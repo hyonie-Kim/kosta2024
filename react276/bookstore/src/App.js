@@ -7,6 +7,8 @@ import DetailPage from './pages/DetailPage';
 import About from './pages/About';
 import axios from 'axios';
 import Cart from './pages/Cart';
+import BestSeller from './pages/BestSeller';
+import Contact from './pages/Contact';
 
 export let contextStorage = createContext(0);
 
@@ -20,6 +22,16 @@ function App() {
   const [expands, setExpands] = useState(false);
   // 재고량
   let [stock] = useState([1, 2, 3]);
+
+  let url1 = 'https://image.yes24.com/goods/104089550/XL';
+  let url2 = 'https://image.yes24.com/goods/123390469/XL';
+  let url3 = 'https://image.yes24.com/goods/103552970/XL';
+
+  const bestSeller = [
+    { rank: 1, title: '모던자바스크립트', img: '5' },
+    { rank: 2, title: '나혼자 C언어', img: '10' },
+    { rank: 3, title: '스파크를 이용한 자연어 처리', img: '9' },
+  ];
 
   // const [books] = useState([
   //   {
@@ -48,7 +60,7 @@ function App() {
     <div className="App">
       <Navbar bg="dark" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="#home">BookStore</Navbar.Brand>
+          <Navbar.Brand href="/">BookStore</Navbar.Brand>
           <Nav className="me-auto">
             {/* <Nav.Link href="/">Home</Nav.Link> */}
             {/* 동적기능*/}
@@ -63,13 +75,13 @@ function App() {
             <Nav.Link href="/best">BestSeller</Nav.Link>
             <Nav.Link href="/cart">Cart</Nav.Link>
             <Nav.Link href="/contact">Contact</Nav.Link>
-            <Nav.Link
+            {/* <Nav.Link
               onClick={() => {
                 navigate('/detail');
               }}
             >
               Detail
-            </Nav.Link>
+            </Nav.Link> */}
           </Nav>
         </Container>
       </Navbar>
@@ -130,6 +142,13 @@ function App() {
             </div>
           }
         ></Route>
+
+        <Route path="/content" element={<Contact></Contact>}></Route>
+        <Route
+          path="/best"
+          element={<BestSeller bestSeller={bestSeller}></BestSeller>}
+        ></Route>
+
         <Route path="/cart" element={<Cart></Cart>}></Route>
         <Route path="/about" element={<About></About>}>
           <Route path="member" element={<div>대표임</div>}></Route>

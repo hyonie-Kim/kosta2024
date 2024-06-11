@@ -111,7 +111,8 @@ app.post('/save', function (req, res) {
     console.log('데이터 저장완료');
   });
 */
-  res.send('데이터 저장완료');
+  // res.send('데이터 저장완료');
+  res.redirect('list');
 });
 
 app.get('/list', function (req, res) {
@@ -162,5 +163,51 @@ app.get('/content/:id', function (req, res) {
     .then((result) => {
       console.log('결과: ', result);
       res.render('content.ejs', { data: result });
+    });
+});
+
+// 수정하기
+app.get('/edit/:id', function (req, res) {
+  console.log(req.params.id);
+
+  req.params.id = new objId(req.params.id);
+  // 리스트에서 클릭한 해당 id
+  mydb
+    .collection('post')
+    .findOne({ _id: req.params.id })
+    .then((result) => {
+      console.log('결과: ', result);
+      res.render('edit.ejs', { data: result });
+    });
+});
+
+app.post('/edit/:id', function (req, res) {
+  console.log('ttt수정', req.body);
+  req.body.id = new objId(req.body.id);
+  console.log('ididididid', req.body.id);
+  // updateOne
+  // 첫번째 업데이트할 유니크한 아이디
+  // 두번째 set 옵션의 역할은 기존 데이터를 현재 데이터로 덮어씌움..
+  mydb
+    .collection('post')
+    .updateOne(
+      {
+        _id: req.body.id,
+      },
+      {
+        $set: {
+          title: req.body.title,
+          content: req.body.content,
+          date: req.body.someDate,
+        },
+      }
+    )
+    .then((result) => {
+      console.log(result);
+      console.log('몽고DB 데이터 수정완료');
+      res.redirect('list');
+    })
+    .catch((err) => {
+      console.log(err);
     });
 });

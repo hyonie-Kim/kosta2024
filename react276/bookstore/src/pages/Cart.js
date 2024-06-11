@@ -1,6 +1,6 @@
 import Table from 'react-bootstrap/Table';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeName, increase, plusCount } from '../store';
+import { changeName, increase, plusCount, minusCount } from '../store';
 /*
 데이터 구조
  [{id: 1, name :"백엔드 입무자를 위한 모던 자바스크립트& node.js", count:1},
@@ -12,7 +12,7 @@ function Cart() {
     return state;
   });
 
-  console.log(a.cart);
+  //   console.log(a.cart);
 
   let dispatch = useDispatch();
 
@@ -35,17 +35,30 @@ function Cart() {
               <td>{item.count}</td>
               <td>
                 <button
+                  className="btn btn-warning"
+                  style={{ marginRight: '10px' }}
                   onClick={() => {
                     // lee 문자열 리턴함.
                     // 넘겨주는 인덱스에 따라서 어떤 값이 올라가는지 구분함
 
-                    dispatch(plusCount(1));
+                    dispatch(plusCount(i));
                   }}
                 >
-                  증가
+                  ➕
+                </button>
+                <button
+                  className="btn btn-warning"
+                  onClick={() => {
+                    // lee 문자열 리턴함.
+                    // 넘겨주는 인덱스에 따라서 어떤 값이 올라가는지 구분함
+
+                    dispatch(minusCount(i));
+                  }}
+                >
+                  ➖
                 </button>
               </td>
-              <div>{a.cart[0].count}</div>
+              {/* <div>{a.cart[i].count}</div> */}
             </tr>
           ))}
           {/* <tr>
