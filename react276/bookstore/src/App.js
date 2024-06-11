@@ -6,6 +6,7 @@ import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
 import DetailPage from './pages/DetailPage';
 import About from './pages/About';
 import axios from 'axios';
+import Cart from './pages/Cart';
 
 export let contextStorage = createContext(0);
 
@@ -129,6 +130,7 @@ function App() {
             </div>
           }
         ></Route>
+        <Route path="/cart" element={<Cart></Cart>}></Route>
         <Route path="/about" element={<About></About>}>
           <Route path="member" element={<div>대표임</div>}></Route>
           <Route path="location" element={<div>서울임</div>}></Route>

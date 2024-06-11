@@ -5,8 +5,6 @@ import mystyle, { styled } from 'styled-components';
 import { contextStorage } from '../App';
 
 function DetailPage(props) {
-
-  
   // 1. 도서이미지
   // 2. 도서명
   // 3. 도서 내용
@@ -95,7 +93,7 @@ function DetailPage(props) {
       <TeamBtn bg="green">팀버튼</TeamBtn> */}
       <Nav variant="tabs" defaultActiveKey="link-0">
         <Nav.Item>
-          <Nav.Link eventKey="link-0" onClick={()=>}>도서정보</Nav.Link>
+          <Nav.Link eventKey="link-0">도서정보</Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="link-1">리뷰</Nav.Link>
@@ -104,27 +102,25 @@ function DetailPage(props) {
           <Nav.Link eventKey="link-2">배송/반품</Nav.Link>
         </Nav.Item>
       </Nav>
-      
+
       <TabContent tab={tab}></TabContent>
     </Container>
   );
 }
 
-function TabContent({tab}) {
-  
-
+function TabContent({ tab }) {
   let ctx = useContext(contextStorage);
   // if(tab == 0){
   //   return <div>도서 정보입니다.</div>
   // }else if(tab == 1)
   //   {return <div>배송이 빨랐어요.</div>}else if(tab == 2)
   //   {return <div>로켓 배송입니다.</div>}
-  
-  return [<div>도서 정보입니다.{ctx.?stock}</div>,
-    <div>배송이 빨랐어요.</div>,
-    <div>로켓 배송이 됩니다.</div>[tab]
-  ]
 
+  return [
+    <div>도서 정보입니다.</div>,
+    <div>배송이 빨랐어요.</div>,
+    (<div>로켓 배송이 됩니다.</div>)[tab],
+  ];
 }
 class DetailPage2 extends Component {
   componentDidMount() {
