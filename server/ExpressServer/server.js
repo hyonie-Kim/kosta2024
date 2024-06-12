@@ -49,18 +49,37 @@ const app = express();
 
 // body-parser 라이브러리 추가
 const bodyParser = require('body-parser');
+
+// cookie-parser 라이브러리 추가
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // EJS 템플릿 사용
 app.set('view engine', 'ejs');
+
+// 정적파일 라이브러리 추가
+app.use(express.static('public'));
 
 // app.listen(8080, function () {
 //   console.log('포트 8080으로 서버 대기중..');
 // });
 
 // book으로 요청 받음
-app.get('/', function (req, res) {
-  res.send('홈입니다!!👀');
+// app.get('/', function (req, res) {
+//   res.send('홈입니다!!👀');
+// });
+
+app.get('/cookie', function (req, res) {
+  let milk = parseInt(req.cookies.milk) + 1000;
+  if (isNaN(milk)) {
+    milk = 0;
+  }
+
+  res.cookie('milk', milk); // cookie(키,값) 형태로 저장됨
+  // 브라우저에 쿠키 정보 send함
+  res.send('product: ' + milk + '원');
 });
 
 app.get('/book', function (req, res) {
@@ -68,7 +87,8 @@ app.get('/book', function (req, res) {
 });
 
 app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/index.html');
+  res.render('index.ejs');
+  // res.sendFile(__dirname + '/index.html');
 });
 
 // enter라우터를 만듦..
@@ -181,7 +201,7 @@ app.get('/edit/:id', function (req, res) {
     });
 });
 
-app.post('/edit/:id', function (req, res) {
+app.post('/edit', function (req, res) {
   console.log('ttt수정', req.body);
   req.body.id = new objId(req.body.id);
   console.log('ididididid', req.body.id);
@@ -191,9 +211,7 @@ app.post('/edit/:id', function (req, res) {
   mydb
     .collection('post')
     .updateOne(
-      {
-        _id: req.body.id,
-      },
+      { _id: req.body.id },
       {
         $set: {
           title: req.body.title,
