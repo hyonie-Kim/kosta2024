@@ -49,13 +49,21 @@ const app = express();
 
 // body-parser 라이브러리 추가
 const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // cookie-parser 라이브러리 추가
 const cookieParser = require('cookie-parser');
-app.use(cookieParser());
+app.use(cookieParser('sdsadas'));
 
-app.use(bodyParser.urlencoded({ extended: true }));
-
+// 세션 라이브러리 추가
+const session = require('express-session');
+app.use(
+  session({
+    secret: 'sdsdadfasf',
+    resave: false, // 세션을 다시 저장
+    saveUninitialized: true,
+  })
+);
 // EJS 템플릿 사용
 app.set('view engine', 'ejs');
 
@@ -72,14 +80,23 @@ app.use(express.static('public'));
 // });
 
 app.get('/cookie', function (req, res) {
-  let milk = parseInt(req.cookies.milk) + 1000;
+  let milk = parseInt(req.signedCookies.milk) + 1000;
   if (isNaN(milk)) {
     milk = 0;
   }
 
-  res.cookie('milk', milk); // cookie(키,값) 형태로 저장됨
+  res.cookie('milk', milk, { signed: true }); // cookie(키,값) 형태로 저장됨
   // 브라우저에 쿠키 정보 send함
-  res.send('product: ' + milk + '원');
+  //res.send('product: ' + milk + '원');
+});
+
+//세션 요청
+app.get('/session', function (req, res) {
+  if (isNaN(req.session.milk)) {
+    req.session.milk = 0;
+  }
+  req.session.milk = req.session.milk + 1000;
+  res.send('product: ' + req.session.milk + '원');
 });
 
 app.get('/book', function (req, res) {
@@ -87,7 +104,7 @@ app.get('/book', function (req, res) {
 });
 
 app.get('/', function (req, res) {
-  res.render('index.ejs');
+  res.render('index.ejs', { user: '' });
   // res.sendFile(__dirname + '/index.html');
 });
 
@@ -227,5 +244,74 @@ app.post('/edit', function (req, res) {
     })
     .catch((err) => {
       console.log(err);
+    });
+});
+
+// 로그인
+app.get('/login', function (req, res) {
+  console.log(req.session);
+  if (req.session.user) {
+    // session.user는 세션id
+    // 세션유지 = 로그인
+    console.log('세션유지');
+    res.render('index.ejs', { user: req.session.user });
+    // res.redirect('/');
+    // res.send('로그인 되었습니다.');
+  } else {
+    res.render('login.ejs');
+  }
+});
+
+app.post('/login', function (req, res) {
+  console.log(req.body.userId);
+  console.log(req.body.userPw);
+
+  mydb
+    .collection('account')
+    .findOne({ userId: req.body.userId })
+    .then((result) => {
+      if (result.userPw == req.body.userPw) {
+        req.session.user = req.body;
+        console.log('새로운 로그인');
+        res.render('index.ejs', { user: req.session.user });
+        // res.send('로그인이 완료되었습니다.');
+      } else {
+        console.log('비밀번호가 틀렸습니다.');
+        res.render('login.ejs');
+        // res.send('비밀번호가 틀렸습니다.');
+      }
+    });
+
+  //res.render('login.ejs');
+});
+
+app.get('/logout', function (req, res) {
+  console.log('로그아웃');
+  req.session.destroy(); // 세션 삭제
+  // res.redirect('/');
+  res.render('index.ejs', { user: null });
+});
+
+app.get('/signup', function (req, res) {
+  console.log('회원가입');
+  res.render('signup.ejs');
+});
+
+app.post('/signup', function (req, res) {
+  console.log('회원가입정보', req.body);
+  res.render('signup.ejs');
+
+  mydb
+    .collection('account')
+    .insertOne({
+      userId: req.body.userId,
+      userPw: req.body.userPw,
+      userGroup: req.body.userGroup,
+      userEmail: req.body.userEmail,
+    })
+    .then((result) => {
+      console.log(result);
+      console.log('회원가입 성공');
+      res.redirect('/');
     });
 });
