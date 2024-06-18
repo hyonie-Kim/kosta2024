@@ -1,3 +1,5 @@
 자바스크립트
 Node.js
 리액트
+닷넷
+HTML/CSS
