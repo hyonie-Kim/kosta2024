@@ -14,6 +14,11 @@
     <%-include('menu.html')%>
         <!-- DB로 부터 읽은 데이터를 서버로부터 받아서 화면에 넣어준다. -->
 
+        <p></p>
+
+        <div class="container my-3"><input type="text">
+            <button>검색하기</button>
+        </div>
         <table class="table table-hover table-striped text-center container mt-4" style="border: 1px solid">
             <thead>
                 <tr>
@@ -72,6 +77,13 @@
 
             $('.enter').click(function (e) {
                 location.href = '/enter';
+            })
+
+            $('.sbtn').click(function () {
+                let inputValue = $('.sword').val()
+                location.href = '\\search?value' + inputValue
+
+
             })
 
         </script>

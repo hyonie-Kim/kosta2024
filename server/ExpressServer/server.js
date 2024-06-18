@@ -36,7 +36,7 @@ mongoClient.connect(process.env.DB_URL).then((client) => {
   //   .then((result) => {
   //     console.log(result);
   //   });
-  app.listen(8080, function () {
+  app.listen(process.env.PROT, function () {
     console.log('포트 8080으로 서버 대기중..');
   });
 });
@@ -46,6 +46,21 @@ const objId = require('mongodb').ObjectId;
 
 const express = require('express');
 const app = express();
+
+//const dotenv = require('dotenv').config();
+
+// multer 라이브러리
+let multer = require('multer');
+let storagre = multer.diskStorage({
+  destination: function (req, res) {
+    done(null, './public/image');
+  },
+  filename: function (req, file, done) {
+    done(null, file.originalname);
+  },
+});
+
+let upload = multer({ storage: storagre });
 
 // body-parser 라이브러리 추가
 const bodyParser = require('body-parser');
@@ -57,6 +72,7 @@ app.use(cookieParser('sdsadas'));
 
 // 세션 라이브러리 추가
 const session = require('express-session');
+const { renderFile } = require('ejs');
 app.use(
   session({
     secret: 'sdsdadfasf',
@@ -64,11 +80,18 @@ app.use(
     saveUninitialized: true,
   })
 );
+
 // EJS 템플릿 사용
 app.set('view engine', 'ejs');
 
 // 정적파일 라이브러리 추가
-app.use(express.static('public'));
+// app.use(express.static('public'));
+
+app.use('/public', express.static('public'));
+
+app.use('/', require('./routes/post.js'));
+app.use('/', require('./routes/add.js'));
+app.use('/', require('./routes/auth.js'));
 
 // app.listen(8080, function () {
 //   console.log('포트 8080으로 서버 대기중..');
@@ -108,64 +131,7 @@ app.get('/', function (req, res) {
   // res.sendFile(__dirname + '/index.html');
 });
 
-// enter라우터를 만듦..
-app.get('/enter', function (req, res) {
-  res.render('enter.ejs');
-  // res.sendFile(__dirname + '/enter.html');
-});
-
 // app.get('/save', function (req, res) {});
-
-// enter.html에서 저장 버튼 누르면 아래 라우터를 실행
-app.post('/save', function (req, res) {
-  // req 프론트엔드에서 전달
-  // res 응답
-  console.log(req.body.title);
-  console.log(req.body.content);
-  console.log(req.body.someDate);
-  //몽고 DB
-  // 데이터 하나만 넣을것임. 이때 오브젝트형식  key,value 형식으로 넣어주면됨.
-  // 성공하면  then 내부에서 콜백함수 등록한다.
-  // 전달인자로 result를 주고 콜백함수를 줄수 있다.
-  mydb
-    .collection('post')
-    .insertOne({
-      title: req.body.title,
-      content: req.body.content,
-      date: req.body.someDate,
-    })
-    .then((result) => {
-      console.log(result);
-      console.log('몽고DB 데이터 저장완료');
-    });
-
-  /* 
-  //mysql
-  let sql = 'insert into post(title, content, created) value(?, ?, now())';
-  let params = [req.body.title, req.body.content];
-  conn.query(sql, params, function (err, result) {
-    if (err) throw err;
-    console.log('데이터 저장완료');
-  });
-*/
-  // res.send('데이터 저장완료');
-  res.redirect('list');
-});
-
-app.get('/list', function (req, res) {
-  // res.send('데이터베이스를 조회합니다.👀');
-
-  mydb
-    .collection('post')
-    .find()
-    .toArray()
-    .then((result) => {
-      // console.log(result);
-      res.render('list.ejs', { data: result });
-    });
-
-  // res.sendFile(__dirname + '/list.html');
-});
 
 app.post('/delete', function (req, res) {
   // 오브젝트 ID 타입캐스팅
@@ -247,44 +213,6 @@ app.post('/edit', function (req, res) {
     });
 });
 
-// 로그인
-app.get('/login', function (req, res) {
-  console.log(req.session);
-  if (req.session.user) {
-    // session.user는 세션id
-    // 세션유지 = 로그인
-    console.log('세션유지');
-    res.render('index.ejs', { user: req.session.user });
-    // res.redirect('/');
-    // res.send('로그인 되었습니다.');
-  } else {
-    res.render('login.ejs');
-  }
-});
-
-app.post('/login', function (req, res) {
-  console.log(req.body.userId);
-  console.log(req.body.userPw);
-
-  mydb
-    .collection('account')
-    .findOne({ userId: req.body.userId })
-    .then((result) => {
-      if (result.userPw == req.body.userPw) {
-        req.session.user = req.body;
-        console.log('새로운 로그인');
-        res.render('index.ejs', { user: req.session.user });
-        // res.send('로그인이 완료되었습니다.');
-      } else {
-        console.log('비밀번호가 틀렸습니다.');
-        res.render('login.ejs');
-        // res.send('비밀번호가 틀렸습니다.');
-      }
-    });
-
-  //res.render('login.ejs');
-});
-
 app.get('/logout', function (req, res) {
   console.log('로그아웃');
   req.session.destroy(); // 세션 삭제
@@ -313,5 +241,60 @@ app.post('/signup', function (req, res) {
       console.log(result);
       console.log('회원가입 성공');
       res.redirect('/');
+    });
+});
+
+let imagepath = '';
+app.post('/photo', upload.single('picture'), function (req, res) {
+  console.log(req.file.path);
+  imagepath = '\\' + req.file.path;
+});
+
+// enter.html에서 저장 버튼 누르면 아래 라우터를 실행
+app.post('/save', function (req, res) {
+  // req 프론트엔드에서 전달
+  // res 응답
+  console.log(req.body.title);
+  console.log(req.body.content);
+  console.log(req.body.someDate);
+  //몽고 DB
+  // 데이터 하나만 넣을것임. 이때 오브젝트형식  key,value 형식으로 넣어주면됨.
+  // 성공하면  then 내부에서 콜백함수 등록한다.
+  // 전달인자로 result를 주고 콜백함수를 줄수 있다.
+  mydb
+    .collection('post')
+    .insertOne({
+      title: req.body.title,
+      content: req.body.content,
+      date: req.body.someDate,
+      path: imagepath,
+    })
+    .then((result) => {
+      console.log(result);
+      console.log('몽고DB 데이터 저장완료');
+      res.redirect('/list');
+    });
+
+  /* 
+  //mysql
+  let sql = 'insert into post(title, content, created) value(?, ?, now())';
+  let params = [req.body.title, req.body.content];
+  conn.query(sql, params, function (err, result) {
+    if (err) throw err;
+    console.log('데이터 저장완료');
+  });
+*/
+  // res.send('데이터 저장완료');
+});
+
+app.get('/search', function (req, res) {
+  console.log(req.query);
+  mydb
+    .collection('post')
+    .find({ title: req.query.value })
+    .toArray()
+    .then((result) => {
+      console.log(result);
+      res.render('sresult.ejs', { data });
     });
 });
